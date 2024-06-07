@@ -29,6 +29,8 @@ db.init_app(app)
 
 URL_PREFIX = '/api'
 
+# Users routes #
+
 @app.post(URL_PREFIX + '/users')
 def create_user():
     try:
@@ -67,7 +69,8 @@ def logout():
     session.pop('user_id')
     return {}, 204
 
-@app.get(URL_PREFIX+'/destinations')
+#  Destination/Country cards routes #
+@app.get(URL_PREFIX + '/destinations')
 def all_destinations():
     return [cont.to_dict() for cont in Countries.query.all()], 200
 
@@ -75,6 +78,18 @@ def all_destinations():
 def get_country(id):
     country = Countries.query.get_or_404(id)
     return jsonify({'id': country.id, 'name': country.name, 'continent': country.continent})
+
+#  Favorite routes #
+
+#function for getting all countries pertaining to a specific user
+@app.get(URL_PREFIX + '/favorites')
+def fav_items_by_user_id():
+    # user_fav = Favorite.query.where(Favorite.user_id == id).first()
+    user_fav = Favorite.query.where(Favorite.user_id == session.get('user_id')).all()
+    if user_fav:
+        return [fav.to_dict() for fav in user_fav], 200
+    else:
+        return {'error': 'Not found'}, 404
 
 #Function for adding countries to favorites
 @app.post(URL_PREFIX+'/favorites')
@@ -92,6 +107,20 @@ def post_contries_to_favorite():
         return {"error": "Invalid data"}, 400
     except ValueError as error:
         return {"error": str(error)}
+    
+#function for deleting countries from the users favorites
+@app.delete(URL_PREFIX + '/favorites/<int:id>')
+def delete_fav_item(id):
+    fav_item = Favorite.query.where(Favorite.id == id).first()
+    if fav_item:
+        db.session.delete(fav_item)
+        db.session.commit()
+        return {}, 204
+    else:
+        return {'error': 'Not found'}, 404
+
+    
+
     
 
 if __name__ == '__main__':
