@@ -17,6 +17,7 @@ import './index.css'
 // React-Router-dom //
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { CurrentUserProvider } from './components/CurrentUserContext.jsx';
+import UserPanel from './components/UserPanel/index.jsx';
 
 
 // Frontend Routes //
@@ -44,6 +45,11 @@ const routes = [
       {
         path: 'newsletter',
         element: <Newsletter />,
+        errorElement: <ErrorPage />
+      },
+      {
+        path: 'userpanel',
+        element: <UserPanel />,
         errorElement: <ErrorPage />
       }
     ]

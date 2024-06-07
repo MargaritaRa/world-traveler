@@ -1,24 +1,20 @@
 // Header.jsx
 import React, { useContext } from 'react';
 import {Link} from 'react-router-dom';
+import NavBar from './NavBar';
 
-export default function Header() {
+
+export default function Header({ currentUser }) {
 
   return (
-    <header>
-      <div className="header-content">
+    <header className='header'>
 
-        <div className="logo" role="img">
+        <Link className="logo-h1" to="./">
 
-            <Link className="logo-h1" to="./">
+          <h1 >Around the World 🌎 </h1>
 
-            <h1 >Around the World 🌎 </h1>
-
-            </Link>
-
-        </div>
-
-      </div>
+        </Link>
+        <NavBar currentUser={currentUser}/>
       
     </header>
   );
