@@ -11,14 +11,17 @@ function Login({setCurrentUser}){
 
         fetch('/api/login', {
             method: 'POST',
-            headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+            headers: {
+                'Content-Type': 'application/json', 
+                'Accept': 'application/json'
+            },
             body: JSON.stringify({username, password})
           }).then(response => {
             if(response.ok) {
               response.json()
               .then(user => setCurrentUser(user))
             }else{
-              alert('invalis username or password')
+              alert('invalid username or password')
             }
           })
         }

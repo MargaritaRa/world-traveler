@@ -4,16 +4,17 @@ function Signup({setCurrentUser}){
     //state
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState ('')
-    const [age, setAge] = useState(0)
     
     //Event //
-    
     function handleSubmit(e){
         e.preventDefault()
 
         fetch('/api/users', {
             method: 'POST',
-            headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+            headers: {
+                'Content-Type': 'application/json', 
+                'Accept': 'application/json'
+            },
             body: JSON.stringify({username, password, age})
           })
           .then(response => {
@@ -26,14 +27,8 @@ function Signup({setCurrentUser}){
           })
         }
 
-    // this coverts the string to int
-    const handleAgeChange = (e) => {
-        const value = e.target.value;
-        setAge(value === '' ? '' : parseInt(value, 10));
-    };
     
     //Render
-    
     return(
         <form className="user-form" onSubmit={handleSubmit}>
 
