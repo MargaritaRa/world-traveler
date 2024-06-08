@@ -2,7 +2,7 @@
 /* All Links styling */
 a {
   font-weight: 500;
-  color: white;
+  color: #913225;
   text-decoration: inherit;
 }
 /* Header styling */
@@ -16,7 +16,7 @@ a {
 
 .logo-h1 {
   text-decoration: none;
-  color: #000;
+  color: #913225;
 }
 
 /* NavBar Styling*/
@@ -24,7 +24,8 @@ a {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  background-color: #f8f9fa;
+  /* background-color: #f8f9fa; */
+  background-color: #913225;
   padding: 10px;
 }
 
@@ -36,11 +37,76 @@ a {
 .nav-link {
   margin-left: 15px;
   text-decoration: none;
-  color: #000;
 }
 
 .navbar {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+}
+
+/* Footer Styling */
+.footer{
+  font-family: "Kite One", sans-serif;
+  color: #fff;
+  background-color: #913225;
+  text-align: center;
+  padding: 2rem 0;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.footer .footer-links {
+  display: flex;
+  gap: 1rem;
+}
+.footer_inner{
+  color: #e1ebdf;
+}
+
+/* Destination Cards styling */
+.desContainer {
+  display: flex;
+}
+
+.contents-list {
+  width: 250px;
+  border-right: 1px solid #ccc;
+  padding: 10px;
+}
+
+.country-list {
+  flex: 1;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+/* .desContainer{
+  font-family: "Kite One", sans-serif;
+  display: grid;
+  grid-template-columns: repeat(5 , 1fr);
+  gap: 4rem;
+  margin: 30px 20px 160px 
+} */
+
+img{
+  display: block;
+  object-fit: cover;
+  width: 100%;
+}
+
+.country-img{
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top:20px
 }

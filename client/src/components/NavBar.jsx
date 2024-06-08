@@ -1,8 +1,7 @@
-import {NavLink, Link} from 'react-router-dom'
+import { Link} from 'react-router-dom'
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
@@ -16,7 +15,7 @@ import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
 import PublicOutlinedIcon from '@mui/icons-material/PublicOutlined';
 import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
 
-export default function NavBar({ currentUser }){
+export default function NavBar({ currentUser, logout }){
 
     const [state, setState] = React.useState({
         top: false,
@@ -41,6 +40,32 @@ export default function NavBar({ currentUser }){
           onKeyDown={toggleDrawer(anchor, false)}
         >
           <List>
+          {!currentUser && (
+                    <ListItem disablePadding>
+                        <ListItemButton component={Link} to="/userpanel">
+                            <ListItemIcon>
+                                <PermIdentityOutlinedIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Login/Signup" />
+                        </ListItemButton>
+                    </ListItem>
+                )}
+                {currentUser && (
+                    <>
+                        <ListItem>
+                            <ListItemText primary={`Welcome, ${currentUser.username}`} />
+                        </ListItem>
+                        <ListItem disablePadding>
+                            <ListItemButton onClick={logout}>
+                                <ListItemIcon>
+                                    <PermIdentityOutlinedIcon />
+                                </ListItemIcon>
+                                <ListItemText primary="Log Out" />
+                            </ListItemButton>
+                        </ListItem>
+                    </>
+                )}
+            <Divider />
             <ListItem disablePadding>
                 <ListItemButton component={Link} to="/">
                     <ListItemIcon>
@@ -73,17 +98,6 @@ export default function NavBar({ currentUser }){
                     <ListItemText primary={"Newsletter"}/>
                 </ListItemButton>
             </ListItem>
-            <Divider />
-            {!currentUser && (
-                    <ListItem disablePadding>
-                        <ListItemButton component={Link} to="/userpanel">
-                            <ListItemIcon>
-                                <PermIdentityOutlinedIcon />
-                            </ListItemIcon>
-                            <ListItemText primary="Login/Signup" />
-                        </ListItemButton>
-                    </ListItem>
-                )}
           </List>
         </Box>
       );
@@ -91,21 +105,7 @@ export default function NavBar({ currentUser }){
 
     return(
         
-        <div>
-            {/* <div>
-                {['left', 'right', 'top', 'bottom'].map((anchor) => (
-                    <React.Fragment key={anchor}>
-                    <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
-                    <Drawer
-                        anchor={anchor}
-                        open={state[anchor]}
-                        onClose={toggleDrawer(anchor, false)}
-                    >
-                        {list(anchor)}
-                    </Drawer>
-                    </React.Fragment>
-                ))}
-            </div> */}
+        <div className='nav-container'>
             <React.Fragment>
                 <MenuIcon onClick={
                     toggleDrawer('right', true)

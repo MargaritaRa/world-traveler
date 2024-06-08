@@ -15,12 +15,13 @@ function Signup({setCurrentUser}){
                 'Content-Type': 'application/json', 
                 'Accept': 'application/json'
             },
-            body: JSON.stringify({username, password, age})
+            body: JSON.stringify({username, password})
           })
           .then(response => {
             if (response.ok) {
               response.json()
               .then(newUser => setCurrentUser(newUser) )
+              console.log(username)
             } else {
               alert("Signup unsuccessful")
             }
@@ -42,7 +43,7 @@ function Signup({setCurrentUser}){
 
             <input 
             className='input-field'
-            type="password"
+            type="text"
             onChange={e => setPassword(e.target.value)}
             value={password}
             placeholder="Password"

@@ -63,6 +63,15 @@ def check_session():
         return user.to_dict(), 200
     else:
         return {}, 204
+        
+@app.post(URL_PREFIX + '/login')
+def login():
+    user = User.query.where(User.username == request.json.get('username')).first()
+    if user and bcrypt.check_password_hash(user._hashed_password, request.json.get('password')):
+        session['user_id'] = user.id
+        return user.to_dict(), 201
+    else:
+        return {'error': 'username or password was invalid'}, 401
 
 @app.delete(URL_PREFIX + '/logout')
 def logout():
@@ -70,6 +79,7 @@ def logout():
     return {}, 204
 
 #  Destination/Country cards routes #
+
 @app.get(URL_PREFIX + '/destinations')
 def all_destinations():
     return [cont.to_dict() for cont in Countries.query.all()], 200
@@ -78,6 +88,16 @@ def all_destinations():
 def get_country(id):
     country = Countries.query.get_or_404(id)
     return jsonify({'id': country.id, 'name': country.name, 'continent': country.continent})
+
+# Search feature #
+@app.get(URL_PREFIX + '/search')
+def search_countries():
+    query = request.args.get('q', '')
+    if query:
+        results = Countries.query.filter(Countries.name.ilike(f'%{query}%')).all()
+        return jsonify([country.to_dict() for country in results]), 200
+    return jsonify([]), 200
+
 
 #  Favorite routes #
 

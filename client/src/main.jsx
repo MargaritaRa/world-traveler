@@ -7,7 +7,7 @@ import React from 'react';
 import App from './components/App.jsx'
 import Favorites from './components/Favorites.jsx'
 import Newsletter from './components/Newsletter.jsx'
-import Destination from './components/Destination.jsx'
+import DesContainer from './components/DesContainer.jsx';
 import ErrorPage  from './components/ErrorPage.jsx'
 import Home from './components/Home.jsx'
 
@@ -18,6 +18,7 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { CurrentUserProvider } from './components/CurrentUserContext.jsx';
 import UserPanel from './components/UserPanel/index.jsx';
+
 
 
 // Frontend Routes //
@@ -34,7 +35,7 @@ const routes = [
       },
       {
         path: 'destinations',
-        element: <Destination />,
+        element: <DesContainer />,
         errorElement: <ErrorPage />
       },
       {

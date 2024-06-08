@@ -40,7 +40,7 @@ function Login({setCurrentUser}){
 
                 <input 
                 className='input-field' 
-                type="password"
+                type="text"
                 onChange = {e => setPassword(e.target.value)}
                 value={password}
                 placeholder='password'
