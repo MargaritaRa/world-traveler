@@ -40,3 +40,4 @@ function ContinentInfo({ name, population, languages, topCountries, religions, m
 }
 
 export default ContinentInfo;
+
