@@ -87,7 +87,7 @@ def all_destinations():
 @app.get(URL_PREFIX + '/destinations/<int:id>')
 def get_country(id):
     country = Countries.query.get_or_404(id)
-    return jsonify({'id': country.id, 'name': country.name, 'continent': country.continent})
+    return jsonify({'id': country.id, 'name': country.name, 'continent': country.continent, 'image ': country.image,'currency': country.currency,'language': country.language,'mannerism': country.mannerism,'visa': country.visa,'tipping': country.tipping,'when': country.when,'links': country.links,'phrases': country.phrases,'foods': country.foods})
 
 # Search feature #
 @app.get(URL_PREFIX + '/search')
