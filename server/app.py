@@ -139,7 +139,21 @@ def delete_fav_item(id):
     else:
         return {'error': 'Not found'}, 404
 
+@app.patch(URL_PREFIX + '/favorites/<int:id>')
+def update_favorite_notes(id):
+    favorite = Favorite.query.get(id)
     
+    if favorite:
+        for key in request.json.keys():
+            setattr(favorite, key, request.json[key])
+        try:
+            db.session.add(favorite)
+            db.session.commit()
+            return favorite.to_dict(), 202
+        except Exception as e:
+            return {'error': 'Failed to update favorite notes'}, 500
+    else:
+        return {'error': 'Favorite not found'}, 404
 
     
 

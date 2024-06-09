@@ -67,6 +67,7 @@ class Favorite(db.Model, SerializerMixin):
     __tablename__ = 'favorites_table'
 
     id = db.Column(db.Integer, primary_key=True)
+    notes = db.Column(db.Text)
 
     user_id = db.Column(db.Integer, db.ForeignKey('users_table.id'))
     country_id = db.Column(db.Integer, db.ForeignKey('countries_table.id'))

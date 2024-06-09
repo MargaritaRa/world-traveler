@@ -66,7 +66,7 @@ function IdDesContainer() {
             <CountryList countries={countries} onClick={handleCountrySelect} />
             <div className="main-country">
                 {selectedCountry ? (
-                    <CountryInfo countries={countries} country={selectedCountry} handleAddToFavorites={handleAddToFavorites} />
+                    <CountryInfo countries={countries} country={selectedCountry} favorites={favorites} handleAddToFavorites={handleAddToFavorites} />
                 ) : (
                     <p>Please select a country to see the details</p>
                 )}
