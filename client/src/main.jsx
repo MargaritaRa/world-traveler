@@ -5,7 +5,7 @@ import React from 'react';
 
 // Components //
 import App from './components/App.jsx'
-import Favorites from './components/Favorites.jsx'
+import FavoritesPage from './components/FavoritesPage.jsx'
 import Newsletter from './components/Newsletter.jsx'
 import DesContainer from './components/DesContainer.jsx';
 import ErrorPage  from './components/ErrorPage.jsx'
@@ -48,7 +48,7 @@ const routes = [
       },
       {
         path: 'favorites',
-        element: <Favorites />,
+        element: <FavoritesPage />,
         errorElement: <ErrorPage />
       },
       {

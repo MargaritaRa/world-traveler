@@ -22,7 +22,7 @@ class User(db.Model, SerializerMixin):
 
     country_names = association_proxy('favorites', 'countries')
 
-    serialize_rules = ('-countries.user',)
+    serialize_rules = ('-favorites.user',)
 
     @validates('username')
     def validate_username(self, key, value):
@@ -60,7 +60,7 @@ class Countries(db.Model, SerializerMixin):
 
     favorites = db.relationship('Favorite', back_populates='countries')
 
-    serialize_rules = ('-user.countries',)
+    serialize_rules = ('-favorites', '-user',)
 
 class Favorite(db.Model, SerializerMixin):
 
@@ -75,3 +75,4 @@ class Favorite(db.Model, SerializerMixin):
     user = db.relationship('User', back_populates='favorites')
 
     serialize_rules = ('-favorites.user', '-favorites.countries',)
+    
