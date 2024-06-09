@@ -10,7 +10,8 @@ import Newsletter from './components/Newsletter.jsx'
 import DesContainer from './components/DesContainer.jsx';
 import ErrorPage  from './components/ErrorPage.jsx'
 import Home from './components/Home.jsx'
-import CountryContainer from './components/CountryContainer.jsx';
+import UserPanel from './components/UserPanel/index.jsx'
+import IdDesContainer from './components/IdDesContainer.jsx';
 
 
 //  CSS
@@ -19,8 +20,7 @@ import './index.css'
 // React-Router-dom //
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { CurrentUserProvider } from './components/CurrentUserContext.jsx';
-import UserPanel from './components/UserPanel/index.jsx';
-import CountryContainer from './components/CountryContainer.jsx';
+
 
 
 
@@ -39,14 +39,12 @@ const routes = [
       {
         path: 'destinations',
         element: <DesContainer />,
-        errorElement: <ErrorPage />,
-        children: [
-          {
-            path: ":id",
-            element: <CountryContainer />,
-            errorElement: <ErrorPage />
-          }
-        ]
+        errorElement: <ErrorPage />
+      },
+      {
+        path: 'destinations/:id',
+        element: <IdDesContainer />,
+        errorElement: <ErrorPage />
       },
       {
         path: 'favorites',

@@ -1,13 +1,18 @@
-import React from 'react';
-
 function ContinentList({ continent, onSelect }) {
+
+    //  This is the list of continents //
+
+    const handleContinentClick = (continent) => {
+        onSelect(continent);
+    };
+
     return (
         <div className="continent-list">
-            <h2>Continents</h2>
+            <h2>List of Continents</h2>
             <ul>
                 {continent.map((continent, index) => (
-                    <li key={index} onClick={() => onSelect(continent)}>
-                        {continent}
+                    <li key={index}>
+                        <button onClick={() => handleContinentClick(continent)}>{continent}</button>
                     </li>
                 ))}
             </ul>

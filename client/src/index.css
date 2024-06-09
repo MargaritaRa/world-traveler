@@ -75,7 +75,7 @@ a {
   display: flex;
 }
 
-.contents-list {
+.contents-list, .country-list {
   width: 250px;
   border-right: 1px solid #ccc;
   padding: 10px;
@@ -88,16 +88,7 @@ a {
   flex-wrap: wrap;
 }
 
-
-/* .desContainer{
-  font-family: "Kite One", sans-serif;
-  display: grid;
-  grid-template-columns: repeat(5 , 1fr);
-  gap: 4rem;
-  margin: 30px 20px 160px 
-} */
-
-img{
+/* img{
   display: block;
   object-fit: cover;
   width: 100%;
@@ -109,4 +100,4 @@ img{
   align-items: center;
   justify-content: center;
   margin-top:20px
-}
+} */

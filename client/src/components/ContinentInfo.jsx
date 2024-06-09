@@ -1,9 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function ContinentInfo({ name, population, languages, topCountries, religions, musicGenres, mannerisms, dosAndDonts }) {
     return (
         <div className="continent-info">
             <h2>{name}</h2>
+            <Link to={`/destinations/${name}`} className="country-list-link">View Country List</Link>
             <h3>Population</h3>
             <p>{population}</p>
             <h3>Languages Spoken</h3>
@@ -40,4 +42,3 @@ function ContinentInfo({ name, population, languages, topCountries, religions, m
 }
 
 export default ContinentInfo;
-

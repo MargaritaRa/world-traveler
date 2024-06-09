@@ -1,9 +1,8 @@
-
-
-
 function CountriesCard({name, continent, image, currency, language, mannerism, visa, tipping, when, links, phrases, foods }) {
 
     return (
+
+        // Shows a list of Countries at once //
 
         <article className="countryPost">
             <div className="country-img">

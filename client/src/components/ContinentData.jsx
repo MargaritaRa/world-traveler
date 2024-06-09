@@ -1,7 +1,7 @@
 
     const ContinentData = {
         centralAmericaCaribbean: {
-            name: 'Central America and the Caribbean',
+            name: 'Central America and Carribean',
             population: 'The combined population of Central America and the Caribbean is approximately 90 million people. Central America alone has about 50 million people, while the Caribbean islands account for around 40 million​.',
             languages: [
                 'Spanish: Widely spoken in Central American countries and many Caribbean nations.',

@@ -1,76 +1,40 @@
-import {useState, useEffect} from 'react'
-import CountriesCard from './CountriesCard'
+import { useState, useEffect } from 'react';
+// import { useNavigate } from 'react-router-dom';
 import ContinentList from './ContinentList';
 import ContinentInfo from './ContinentInfo';
 import ContinentData from './ContinentData';
-// import SearchBar from './SearchBar'
 
-function DesContainer(){
+function DesContainer() {
+    const [destinations, setDestinations] = useState([]);
+    const [selectedContinent, setSelectedContinent] = useState(null);
 
-    const URL = '/api/destinations'
-    const [destination, setDestination] = useState([])
-    const [selectedContinent, setSelectedContinent] = useState(null)
-    const [selectedCountry, setSelectedCountry] = useState(null);
-
-    useEffect(() =>{
-        fetch(URL)
-        .then(res => res.json())
-        .then(data => {
-            // console.log('Fetched destinations:', data);
-            setDestination(data);
-        })
-        .catch(error => alert(error))
-    }, [])
-
+    useEffect(() => {
+        fetch('/api/destinations')
+            .then(response => response.json())
+            .then(data => setDestinations(data))
+            .catch(error => console.error('Error fetching destinations:', error));
+    }, []);
 
     const handleContinentSelect = (continent) => {
-        console.log('Selected continent:', continent)
         setSelectedContinent(continent);
-        // Reset selected country when a new continent is selected
-        setSelectedCountry(null); 
     };
 
-    const handleCountrySelect = (country) => {
-        setSelectedCountry(country);
-    };
-
-    const filteredDestinations = selectedContinent ? destination.filter(dest => dest.continent === selectedContinent) : destination;
-
-    const mappedCards = filteredDestinations.map(destination => (
-        <CountriesCard 
-            key={destination.id} 
-            image={destination.image} 
-            name={destination.name} 
-            continent={destination.continent} 
-            currency={destination.currency} 
-            language={destination.language} 
-            mannerism={destination.mannerism} 
-            visa={destination.visa} 
-            tipping={destination.tipping} 
-            when={destination.when} 
-            links={destination.links} 
-            phrases={destination.phrases} 
-            foods={destination.foods} 
-            onSelect={handleCountrySelect}
-            />
-        ))
-        // console.log('Mapped cards:', mappedCards);
-
-        return (
-            <div className='desContainer'>
-                <ContinentList continent={Object.keys(ContinentData)} onSelect={handleContinentSelect} />
-                <div className='main-content'>
-                    {selectedContinent && !selectedCountry && (
-                        <ContinentInfo {...ContinentData[selectedContinent]} />
-                    )}
-                    {selectedCountry && (
-                        <CountriesCard {...selectedCountry} />
-                    )}
-                    {!selectedContinent && (
-                        <div>Please select a continent to see more details.</div>
-                    )}
-                </div>
+    return (
+        <div className='desContainer'>
+            <ContinentList continent={Object.keys(ContinentData)} onSelect={handleContinentSelect} />
+            <div className='main-content'>
+                {selectedContinent ? (
+                    <ContinentInfo destinations={destinations} selectedContinent={selectedContinent} {...ContinentData[selectedContinent]} />
+                ) : (
+                    <p>Please select a continent to see the details</p>
+                )}
             </div>
-        );
+        </div>
+    );
 }
-export default DesContainer
+
+export default DesContainer;
+
+
+
+
