@@ -8,7 +8,7 @@ function Home() {
         fetch('/api/destinations')
             .then(response => response.json())
             .then(data => {
-                console.log('Fetched destinations:', data); // Log fetched data
+                console.log('Fetched destinations:', data);
                 setDestinations(data);
             })
             .catch(error => console.error('Error fetching destinations:', error));
@@ -17,7 +17,7 @@ function Home() {
     return (
         <div>
             <h1>Home Page</h1>
-            <SearchBar destinations={destinations} />
+            <SearchBar destinations={destinations}/>
         </div>
     );
 }

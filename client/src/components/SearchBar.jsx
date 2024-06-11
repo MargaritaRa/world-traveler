@@ -7,21 +7,21 @@ function SearchBar({ destinations }) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log('Destinations prop:', destinations); // Debugging log for initial destinations data
+        // console.log('Destinations prop:', destinations);
     }, [destinations]);
 
     const handleSearch = (event) => {
-        event.preventDefault(); // Prevent form submission reload
+        event.preventDefault();
         const value = query.trim();
-        console.log('Search query:', value); // Debugging log
+        // console.log('Search query:', value);
 
         if (value !== '') {
             const results = destinations.filter(dest => {
-                console.log('Checking destination:', dest); // Debugging log for each destination
+                // console.log('Checking destination:', dest);
                 return dest.name.toLowerCase().includes(value.toLowerCase()) ||
                     dest.continent.toLowerCase().includes(value.toLowerCase());
             });
-            console.log('Filtered results:', results); // Debugging log
+            // console.log('Filtered results:', results);
             setFilteredResults(results);
         } else {
             setFilteredResults([]);
@@ -30,11 +30,11 @@ function SearchBar({ destinations }) {
 
     const handleInputChange = (event) => {
         setQuery(event.target.value);
-        console.log('Input change:', event.target.value); // Debugging log
+        // console.log('Input change:', event.target.value);
     };
 
     const handleResultClick = (id) => {
-        console.log('Navigating to:', id); // Debugging log
+        // console.log('Navigating to:', id); 
         navigate(`/destinations/${id}`);
     };
 

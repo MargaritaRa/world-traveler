@@ -26,6 +26,22 @@ function IdDesContainer() {
             })
             .catch((error) => console.error('Error fetching destinations:', error));
     }, [id]);
+    
+    useEffect(() => {
+        if (id) {
+            fetch(`/api/destinations/${id}`)
+                .then((resp) => {
+                    if (!resp.ok) {
+                        throw new Error('Failed to fetch country details');
+                    }
+                    return resp.json();
+                })
+                .then((data) => {
+                    setSelectedCountry(data);
+                })
+                .catch((error) => console.error('Error fetching country:', error));
+        }
+    }, [id]);
 
     const handleCountrySelect = (countryId) => {
         // console.log('Selected country ID:', countryId);
