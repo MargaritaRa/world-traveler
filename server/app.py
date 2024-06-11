@@ -89,16 +89,6 @@ def get_country(id):
     country = Countries.query.get_or_404(id)
     return jsonify({'id': country.id, 'name': country.name, 'continent': country.continent, 'image ': country.image,'currency': country.currency,'language': country.language,'mannerism': country.mannerism,'visa': country.visa,'tipping': country.tipping,'when': country.when,'links': country.links,'phrases': country.phrases,'foods': country.foods})
 
-# Search feature #
-@app.get(URL_PREFIX + '/search')
-def search_countries():
-    query = request.args.get('q', '')
-    if query:
-        results = Countries.query.filter(Countries.name.ilike(f'%{query}%')).all()
-        return jsonify([country.to_dict() for country in results]), 200
-    return jsonify([]), 200
-
-
 #  Favorite routes #
 
 #function for getting all countries pertaining to a specific user

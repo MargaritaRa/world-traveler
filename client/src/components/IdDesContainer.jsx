@@ -30,7 +30,12 @@ function IdDesContainer() {
     const handleCountrySelect = (countryId) => {
         // console.log('Selected country ID:', countryId);
         fetch(`/api/destinations/${countryId}`)
-            .then((resp) => resp.json())
+            .then((resp) => {
+                if (!resp.ok) {
+                    throw new Error('Failed to fetch country details');
+                }
+                return resp.json();
+            })
             .then((data) => {
                 // console.log('Fetched country data:', data); 
                 setSelectedCountry(data);

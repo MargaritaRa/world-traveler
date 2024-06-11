@@ -1,4 +1,3 @@
-
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Unstable_Grid2';
 import Paper from '@mui/material/Paper';
@@ -22,6 +21,11 @@ function CountryInfo({ country, handleAddToFavorites, favorites }) {
 
     const isFavorited = favorites.some(fav => fav.id === country.id);
 
+    console.log(country)
+   
+    // const imageUrl = country.image ? country.image.trim() : '';
+    // console.log('Image URL:', imageUrl);
+
     return (
         <Paper
         sx={{
@@ -36,8 +40,29 @@ function CountryInfo({ country, handleAddToFavorites, favorites }) {
         >
           {/* xs is a total of 12 */}
           <Grid container spacing={2}>
-            <Grid xs={2}>
+            <Grid xs={4}>
               <Item>{country.name}</Item>
+            </Grid>
+            <Grid xs={8}>
+              <Item>
+                <Img 
+                  src={country.image} 
+                  alt={country.name} 
+                  onError={(e) => e.target.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTimMZoB13-Lecpkz3s_bwRZt-MW6W9PZfG-g&s'}
+                  />
+              </Item>
+              {/* <Item>
+                    {imageUrl ? (
+                        <Img 
+                            src={imageUrl} 
+                            alt={country.name} 
+                            onError={(e) => e.target.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTimMZoB13-Lecpkz3s_bwRZt-MW6W9PZfG-g&s'}
+                        />
+                    ) : (
+                        <p>No image available</p>
+                    )}
+                </Item> */}
+
             </Grid>
             <Grid xs={3}>
               <Item>Currency: {country.currency}</Item>
@@ -47,9 +72,6 @@ function CountryInfo({ country, handleAddToFavorites, favorites }) {
             </Grid>
             <Grid xs={4}>
               <Item><FavoritesButton countryId={country.id} isFavorited={isFavorited} handleAddToFavorites={handleAddToFavorites} /></Item>
-            </Grid>
-            <Grid xs={4}>
-              <Item><Img src={country.image} alt={country.name} /></Item>
             </Grid>
             <Grid xs={4}>
               <Item>Visa: {country.visa}</Item>

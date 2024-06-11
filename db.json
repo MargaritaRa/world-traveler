@@ -1,0 +1,22 @@
+{
+    "spain": [
+        {
+            "image1": "",
+            "title1": "Granada",
+            "image2": "",
+            "title2": "Madrid",
+            "image3": "",
+            "title3": "Barcelona"
+        }
+    ],
+    "italy": [
+        {
+            "image1": "",
+            "title1": "Florence",
+            "image2": "",
+            "title2": "Tuscany",
+            "image3": "",
+            "title3": "Rome"
+        }
+    ]
+}

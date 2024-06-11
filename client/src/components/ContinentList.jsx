@@ -10,8 +10,8 @@ function ContinentList({ continent, onSelect }) {
         <div className="continent-list">
             <h2>List of Continents</h2>
             <ul>
-                {continent.map((continent, index) => (
-                    <li key={index}>
+                {continent.map((continent, value) => (
+                    <li key={value}>
                         <button onClick={() => handleContinentClick(continent)}>{continent}</button>
                     </li>
                 ))}

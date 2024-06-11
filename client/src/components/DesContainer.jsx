@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-// import { useNavigate } from 'react-router-dom';
 import ContinentList from './ContinentList';
 import ContinentInfo from './ContinentInfo';
 import ContinentData from './ContinentData';
