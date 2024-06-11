@@ -8,7 +8,7 @@ function Home() {
         fetch('/api/destinations')
             .then(response => response.json())
             .then(data => {
-                console.log('Fetched destinations:', data);
+                // console.log('Fetched destinations:', data);
                 setDestinations(data);
             })
             .catch(error => console.error('Error fetching destinations:', error));

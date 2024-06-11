@@ -1,7 +1,10 @@
+//  Component //
+import FavoritesButton from './FavoriteButton';
+
+// MUI //
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Unstable_Grid2';
 import Paper from '@mui/material/Paper';
-import FavoritesButton from './FavoriteButton';
 
 const Img = styled('img')({
     margin: 'auto',
@@ -21,7 +24,7 @@ function CountryInfo({ country, handleAddToFavorites, favorites }) {
 
     const isFavorited = favorites.some(fav => fav.id === country.id);
 
-    console.log(country)
+    // console.log(country)
    
     // const imageUrl = country.image ? country.image.trim() : '';
     // console.log('Image URL:', imageUrl);
