@@ -253,7 +253,7 @@ if __name__ == '__main__':
 
         c = Countries(
             name = "Saudi Arabia",
-            continent = "North Africa and Middle East",
+            continent = "Middle East",
             image = "/image/saudi_arabia.png",
             currency = "Saudi Riyal (SR)",
             language = "Arabic",
@@ -287,7 +287,7 @@ if __name__ == '__main__':
 
         c = Countries(
             name = "Egypt",
-            continent = "North Africa and Middle East",
+            continent = "Middle East",
             image = "/image/egypt.png",
             currency = "Egyptian Pound (EGP)",
             language = "Arabic",
@@ -304,7 +304,7 @@ if __name__ == '__main__':
 
         c = Countries(
             name = "Morocco",
-            continent = "North Africa and Middle East",
+            continent = "Middle East",
             image = "/image/morocco.png",
             currency = "Moroccan Dirham (MAD)",
             language = "Arabic, Berber",
@@ -593,7 +593,7 @@ if __name__ == '__main__':
 
         c = Countries(
             name = "Israel",
-            continent = "North Africa and Middle East",
+            continent = "Middle East",
             image = "/image/israel.png",
             currency = "Israeli New Shekel (ILS)",
             language = "Hebrew, Arabic",
@@ -610,7 +610,7 @@ if __name__ == '__main__':
 
         c = Countries(
             name = "Oman",
-            continent = "North Africa and Middle East",
+            continent = "Middle East",
             image = "/image/oman.png",
             currency = "Omani Rial (OMR)",
             language = "Arabic",
@@ -746,7 +746,7 @@ if __name__ == '__main__':
 
         c = Countries(
             name = "Jordan",
-            continent = "North Africa and Middle East",
+            continent = "Middle East",
             image = "/image/jordan.png",
             currency = "Jordanian Dinar (JOD)",
             language = "Arabic",
@@ -763,7 +763,7 @@ if __name__ == '__main__':
 
         c = Countries(
             name = "Turkey",
-            continent = "North Africa and Middle East",
+            continent = "Middle East",
             image = "/image/turkey.png",
             currency = "Turkish Lira (TRY)",
             language = "Turkish",

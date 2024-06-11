@@ -1,17 +1,18 @@
 //  Component //
 import FavoritesButton from './FavoriteButton';
+import CountryImageList from './CountryImageList';
 
 // MUI //
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Unstable_Grid2';
 import Paper from '@mui/material/Paper';
 
-const Img = styled('img')({
-    margin: 'auto',
-    display: 'block',
-    maxWidth: '100%',
-    maxHeight: '100%',
-  });
+// const Img = styled('img')({
+//     margin: 'auto',
+//     display: 'block',
+//     maxWidth: '100%',
+//     maxHeight: '100%',
+//   });
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
@@ -48,24 +49,8 @@ function CountryInfo({ country, handleAddToFavorites, favorites }) {
             </Grid>
             <Grid xs={8}>
               <Item>
-                <Img 
-                  src={country.image} 
-                  alt={country.name} 
-                  onError={(e) => e.target.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTimMZoB13-Lecpkz3s_bwRZt-MW6W9PZfG-g&s'}
-                  />
+              <CountryImageList country={country.name} />
               </Item>
-              {/* <Item>
-                    {imageUrl ? (
-                        <Img 
-                            src={imageUrl} 
-                            alt={country.name} 
-                            onError={(e) => e.target.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTimMZoB13-Lecpkz3s_bwRZt-MW6W9PZfG-g&s'}
-                        />
-                    ) : (
-                        <p>No image available</p>
-                    )}
-                </Item> */}
-
             </Grid>
             <Grid xs={3}>
               <Item>Currency: {country.currency}</Item>
