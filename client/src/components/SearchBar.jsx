@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import SearchIcon from '@mui/icons-material/Search';
 
 function SearchBar({ destinations }) {
     const [query, setQuery] = useState('');
@@ -39,31 +40,33 @@ function SearchBar({ destinations }) {
     };
 
     return (
-        <div className='searchBar'>
-            <form onSubmit={handleSearch}>
-                <input
-                    type='text'
-                    value={query}
-                    onChange={handleInputChange}
-                    placeholder="Plan your next trip!"
-                />
-                <button type='submit'>Search</button>
-            </form>
-            {query !== '' && filteredResults.length === 0 && (
-                <p>No results found</p>
+        <div className='searchBarContainer'>
+        <form onSubmit={handleSearch} className='searchForm'>
+            <input
+                type='text'
+                value={query}
+                maxLength={128}
+                onChange={handleInputChange}
+                placeholder="Where's your next adventure?"
+                className='searchBar'
+            />
+            <button className="searchBtn" type='submit'><SearchIcon/>Search</button>
+        </form>
+        {query !== '' && filteredResults.length === 0 && (
+            <p>No results found</p>
+        )}
+        <div className="search-results">
+            {filteredResults.length > 0 && (
+                <ul>
+                    {filteredResults.map((result) => (
+                        <li key={result.id} onClick={() => handleResultClick(result.id)}>
+                            {result.name} ({result.continent})
+                        </li>
+                    ))}
+                </ul>
             )}
-            <div className="search-results">
-                {filteredResults.length > 0 && (
-                    <ul>
-                        {filteredResults.map((result) => (
-                            <li key={result.id} onClick={() => handleResultClick(result.id)}>
-                                {result.name} ({result.continent})
-                            </li>
-                        ))}
-                    </ul>
-                )}
-            </div>
         </div>
+    </div>
     );
 }
 

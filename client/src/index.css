@@ -1,5 +1,8 @@
 /*  Font styling */
 @import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&family=Dancing+Script:wght@400..700&family=Lora:ital,wght@0,400..700;1,400..700&family=Merienda:wght@300..900&family=Pacifico&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* "montserrat_regular",sans-serif */
 
 .pacifico-regular {
   font-family: "Pacifico", cursive;
@@ -50,6 +53,17 @@
   font-weight: 400;
   font-style: normal;
 }
+.fav-title{
+  font-family: "Bitter", serif;
+  color: #913225;
+}
+body{
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: var(--background-image) !important;
+  /* background-color: #f5f1f2; */
+}
 
 /* // <uniquifier>: Use a unique and descriptive class name
 // <weight>: Use a value from 400 to 700 */
@@ -67,11 +81,15 @@ a {
   text-decoration: inherit;
 }
 /* Header styling */
-.header {
+header {
+  font-family: "Bitter", serif;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 1rem 2rem;
+  max-width: 100%;
+  height: auto;
+  text-decoration: none;
   background-color: #f8f9fa;
 }
 
@@ -136,29 +154,63 @@ a {
   display: flex;
 }
 
-.contents-list, .country-list {
+.contents-list{
   width: 250px;
   border-right: 1px solid #ccc;
   padding: 10px;
 }
 
 .country-list {
-  flex: 1;
+  width: 250px;
+  /* border-right: 1px solid #ccc; */
   padding: 10px;
-  display: flex;
-  flex-wrap: wrap;
 }
 
-/* img{
-  display: block;
-  object-fit: cover;
-  width: 100%;
-}
-
-.country-img{
-  height: 300px;
+/* Search Bar stying */
+.searchBarContainer {
   display: flex;
-  align-items: center;
   justify-content: center;
-  margin-top:20px
-} */
+  align-items: center;
+  height: 100vh;
+}
+.searchForm {
+  position: relative;
+  width: 50%;
+}
+
+.searchDiv {
+  color: #913225;
+  text-align: center;
+}
+.searchBar {
+  width: 100%;
+  padding: 25px 20px; 
+  box-sizing: border-box;
+  font-family: "Bitter", serif;
+  background: transparent;
+  border: 2px solid #913225;
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.searchBtn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #913225;
+  color: white;
+  border: none;
+  padding: 5px 25px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: "Bitter", serif;
+  font-weight: 600;
+}
+
+/* Adjustments for small screens */
+@media (max-width: 768px) {
+  .searchForm {
+    width: 80%;
+  }
+}

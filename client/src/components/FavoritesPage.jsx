@@ -1,13 +1,24 @@
+// React //
 import { useEffect, useState } from 'react';
+// MUI //
 import DeleteIcon from '@mui/icons-material/Delete';
+import SendIcon from '@mui/icons-material/Send';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField'
 import MuiAlert from '@mui/material/Alert';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Grid from '@mui/material/Unstable_Grid2';
+import Typography from '@mui/material/Typography';
+import { red } from '@mui/material/colors';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
-
+const primary = red[900]; // #f44336
+const accent = red['A100']; // #e040fb
 
 function FavoritesPage() {
     const [favorites, setFavorites] = useState([]);
@@ -90,28 +101,47 @@ function FavoritesPage() {
       return favorites.map(fav => {
         // console.log('Favorite:', fav);
         return (
-          <div key={fav.id}>
-            <h2>{fav.countries && fav.countries.name ? fav.countries.name : 'Unknown'}</h2>
-            <p>Continent: {fav.countries && fav.countries.continent ? fav.countries.continent : 'Unknown'}</p>
-            <p>Currency: {fav.countries && fav.countries.currency ? fav.countries.currency : 'Unknown'}</p>
-            <p>Language: {fav.countries && fav.countries.language ? fav.countries.language : 'Unknown'}</p>
-            <TextField
-              label="Notes"
-              multiline
-              rows={4}
-              value={fav.notes}
-              onChange={(event) => handleNotesChange(fav.id, event.target.value)}
-            />
-            <Button onClick={() => handleSaveNotes(fav.id)}>Save</Button>
-            <Button startIcon={<DeleteIcon />} onClick={() => handleDelete(fav.id)}>Delete</Button>
-          </div>
+          <Grid container spacing={2}>
+        {favorites.map((fav) => (
+          <Grid item xs={12} sm={6} md={4} lg={3} key={fav.id}>
+            <Card sx={{ maxWidth: 345, fontFamily: "Dancing Script, cursive" }} >
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  {fav.countries && fav.countries.name ? fav.countries.name : 'Unknown'}
+                </Typography>
+                <Typography variant="body2" color="text.secondary" sx={{ fontFamily: "Poppin", color: primary}}>
+                  <p>Continent: {fav.countries && fav.countries.continent ? fav.countries.continent : 'Unknown'}</p>
+                  <p>Currency: {fav.countries && fav.countries.currency ? fav.countries.currency : 'Unknown'}</p>
+                  <p>Language: {fav.countries && fav.countries.language ? fav.countries.language : 'Unknown'}</p>
+                </Typography>
+              </CardContent>
+              <TextField
+                label="Notes"
+                multiline
+                rows={4}
+                value={fav.notes}
+                onChange={(event) => handleNotesChange(fav.id, event.target.value)}
+                sx={{ fontFamily: "Dancing Script, cursive" }}
+                />
+              <CardActions>
+                <Button sx={{ fontFamily: "Dancing Script, cursive", color:primary }} variant="outlined" endIcon={<SendIcon />} onClick={() => handleSaveNotes(fav.id)}>
+                  Save
+                </Button>
+                <Button  sx={{ fontFamily: "Dancing Script, cursive", color:primary }} variant="outlined" startIcon={<DeleteIcon />} onClick={() => handleDelete(fav.id)}>
+                  Delete
+                </Button>
+              </CardActions>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
         );
       });
     })
 
     return (
       <div>
-        <h1>Favorite Page</h1>
+        <h1 className='fav-title'>My Favorites<FavoriteBorderIcon/></h1>
         {favorites.length === 0 ? (
             <p>No favorites yet!</p>
         ) : (
@@ -124,5 +154,3 @@ function FavoritesPage() {
     }
 
 export default FavoritesPage;
-
-

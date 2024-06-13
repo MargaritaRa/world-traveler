@@ -4,7 +4,7 @@ import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import ListSubheader from '@mui/material/ListSubheader';
 import IconButton from '@mui/material/IconButton';
-import InfoIcon from '@mui/icons-material/Info';
+
 
 const slideShow = {
     Spain: [
@@ -73,7 +73,6 @@ function CountryImageList({ country }) {
                                     sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
                                     aria-label={`info about ${item.name}`}
                                 >
-                                    {/* <InfoIcon /> */}
                                 </IconButton>
                             }
                         />
