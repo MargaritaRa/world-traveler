@@ -9,7 +9,7 @@ function Header() {
   const { currentUser, logout } = useContext(CurrentUserContext);
 
   return (
-    <header className='header'>
+    <header className='header-container'>
 
         <Link className="logo-h1" to="./">
           <h1 >Around the World 🌎 </h1>
