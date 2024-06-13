@@ -10,7 +10,7 @@ function App() {
   const isHomePage = location.pathname === '/';
 
   return (
-      <div>
+      <div className={isHomePage ? 'home-page' : ''}>
       <Header />
       <Outlet />
       <Footer />

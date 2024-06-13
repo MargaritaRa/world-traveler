@@ -1,6 +1,10 @@
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+import { red } from '@mui/material/colors';
+
 function ContinentList({ continent, onSelect }) {
 
-    //  This is the list of continents //
+    const primary = red[900];
 
     const handleContinentClick = (continent) => {
         onSelect(continent);
@@ -8,14 +12,20 @@ function ContinentList({ continent, onSelect }) {
 
     return (
         <div className="continent-list">
-            <h2>List of Continents</h2>
-            <ul>
+            <h2 className='country-list-h2'>All destinations</h2>
+            <Stack direction="column" spacing={.10}>
                 {continent.map((continent, value) => (
-                    <li key={value}>
-                        <button onClick={() => handleContinentClick(continent)}>{continent}</button>
-                    </li>
+                    <div key={value}>
+                        <Button 
+                            size='small'
+                            variant='text' 
+                            sx={{ fontFamily: "Poppin", color: primary}}
+                            onClick={() => handleContinentClick(continent)}>
+                            {continent}
+                        </Button>
+                    </div>
                 ))}
-            </ul>
+            </Stack>
         </div>
     );
 }

@@ -1,6 +1,10 @@
-function CountryList({ countries, onClick }) {
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+import { red } from '@mui/material/colors';
 
-    //  This is the list of countries //
+function CountryList({ continent, countries, onClick }) {
+    
+    const primary = red[900];
 
     const handleCountryClick = (country) => {
         onClick(country.id);
@@ -8,16 +12,23 @@ function CountryList({ countries, onClick }) {
 
     return (
         <div className="country-list">
-            <h2>List of Countries</h2>
-            <ul>
-                {countries.map((country) => (
-                    <li key={country.id}>
-                        <button onClick={() => handleCountryClick(country)}>{country.name}</button>
-                    </li>
+            <h2 className='country-list-h2'>All destinations in {continent}</h2>
+            <Stack direction="column" spacing={.25}>
+                {Array.isArray(countries) && countries.map((country) => (
+                    <div key={country.id}>
+                        <Button 
+                            size='small'
+                            variant='text' 
+                            sx={{ fontFamily: "Poppin", color: primary}}
+                            onClick={() => handleCountryClick(country)}>
+                            {country.name}
+                        </Button>
+                    </div>
                 ))}
-            </ul>
+            </Stack>
         </div>
     );
 }
 
 export default CountryList;
+

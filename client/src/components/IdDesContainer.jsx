@@ -4,13 +4,10 @@ import CountryInfo from './CountryInfo';
 import CountryList from './CountryList';
 
 function IdDesContainer() {
-
-    const { id } = useParams();
+    const { id } = useParams(); // `id` is the continent name in this case
     const [countries, setCountries] = useState([]);
-    const [selectedCountry, setSelectedCountry] = useState(null)
+    const [selectedCountry, setSelectedCountry] = useState(null);
     const [favorites, setFavorites] = useState([]);
-
-    
 
     useEffect(() => {
         fetch('/api/destinations')
@@ -44,7 +41,6 @@ function IdDesContainer() {
     }, [id]);
 
     const handleCountrySelect = (countryId) => {
-        // console.log('Selected country ID:', countryId);
         fetch(`/api/destinations/${countryId}`)
             .then((resp) => {
                 if (!resp.ok) {
@@ -53,7 +49,6 @@ function IdDesContainer() {
                 return resp.json();
             })
             .then((data) => {
-                // console.log('Fetched country data:', data); 
                 setSelectedCountry(data);
             })
             .catch((error) => console.error('Error fetching country:', error));
@@ -84,10 +79,10 @@ function IdDesContainer() {
 
     return (
         <div className="idDesCon">
-            <CountryList countries={countries} onClick={handleCountrySelect} />
+            <CountryList continent={id} countries={countries} onClick={handleCountrySelect} />
             <div className="main-country">
                 {selectedCountry ? (
-                    <CountryInfo countries={countries} country={selectedCountry} favorites={favorites} handleAddToFavorites={handleAddToFavorites} />
+                    <CountryInfo country={selectedCountry} favorites={favorites} handleAddToFavorites={handleAddToFavorites} />
                 ) : (
                     <p>Please select a country to see the details</p>
                 )}
@@ -97,4 +92,5 @@ function IdDesContainer() {
 }
 
 export default IdDesContainer;
+
 

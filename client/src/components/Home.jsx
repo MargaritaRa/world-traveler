@@ -19,16 +19,18 @@ function Home() {
             'url(/image/spain1.jpg)',
             'url(/image/spain2.jpg)',
             'url(/image/spain3.jpg)',
-            "url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCeju03n7p4g8UVAECZhx2zY6ukEnHAhMOBA&s)"
+            'url(/image/egypt1.jpg)',
+            'url(/image/egypt2.jpg)',
+            'url(/image/egypt3.jpg)',
         ];
         const randomImage = images[Math.floor(Math.random() * images.length)];
         // console.log('Selected background image:', randomImage);
         document.documentElement.style.setProperty('--background-image', randomImage);
 
-        return () => {
-            document.body.style.backgroundImage = '';
-        };
-    }, []);
+    return () => {
+      document.documentElement.style.setProperty('--background-image', 'none');
+    };
+  }, []);
 
     return (
         <div className='searchDiv'>
