@@ -456,7 +456,7 @@ if __name__ == '__main__':
         countries.append(c)
 
         c = Countries(
-            name = "Dominican Republic",
+            name = "Dominican_Republic",
             continent = "Central America and Carribean",
             image = "/image/dr.png",
             currency = "Dominican Peso (DOP)",
@@ -473,7 +473,7 @@ if __name__ == '__main__':
         countries.append(c)
 
         c = Countries(
-            name = "Puerto Rico",
+            name = "Puerto_Rico",
             continent = "Central America and Carribean",
             image = "/image/pr.png",
             currency = "United States Dollar (USD)",
