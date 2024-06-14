@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import IconButton from '@mui/material/IconButton';
 
 function FavoritesButton({ countryId, handleAddToFavorites, isFavorited }) {
 
@@ -13,9 +14,9 @@ function FavoritesButton({ countryId, handleAddToFavorites, isFavorited }) {
 
 
   return (
-    <button onClick={handleClick}>
+    <IconButton onClick={handleClick}>
         {favorited ? <FavoriteIcon /> : <FavoriteBorderIcon />}
-    </button>
+    </IconButton>
   );
 }
 

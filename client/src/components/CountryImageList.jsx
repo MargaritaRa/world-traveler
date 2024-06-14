@@ -34,7 +34,7 @@ const slideShow = {
     ],
     Japan: [
         {name: 'Tokyo tower sunset view', img: '/image/japan1.jpg'},
-        {name: 'Geisha', img: '/image/japan2.JPG'},
+        {name: 'Geisha', img: '/image/japan22.JPG'},
         {name: 'Mt. Fuji San', img: '/image/japan3.JPG'},
         {name: 'Kyoto tower at sunset', img: '/image/japan5.jpg'},
         {name: 'Tokyo tower sunset view', img: '/image/japan1.jpg'},

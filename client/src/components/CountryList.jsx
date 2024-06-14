@@ -13,7 +13,7 @@ function CountryList({ continent, countries, onClick }) {
     return (
         <div className="country-list">
             <h2 className='country-list-h2'>All destinations in {continent}</h2>
-            <Stack direction="column" spacing={.25}>
+            <Stack direction="row" spacing={3}>
                 {Array.isArray(countries) && countries.map((country) => (
                     <div key={country.id}>
                         <Button 

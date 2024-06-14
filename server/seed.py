@@ -139,7 +139,7 @@ if __name__ == '__main__':
             currency = "Japanese Yen (¥)",
             language = "Japanese",
             mannerism = "Bow when greeting, remove shoes indoors, avoid loud conversations in public.",
-            visa = "https://www.jp.emb-japan.go.jp/itpr_en/visa.html",
+            visa = "https://www.us.emb-japan.go.jp/itpr_en/travel_and_visa.html",
             phrases = "Hello: こんにちは (Konnichiwa), Goodbye: さようなら (Sayōnara), Thank you: ありがとう (Arigatō), Sorry: ごめんなさい (Gomen'nasai), No: いいえ (Iie)",
             tipping = "Tipping is not customary.",
             when = "Spring (March to May) and Autumn (September to November)",

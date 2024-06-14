@@ -44,12 +44,9 @@
   font-family: "Bitter", serif;
   color: #913225;
 }
-/* body{
-  /* background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center; */
-  /* background-color: #f5f1f2; 
-} */
+body{
+  background-color: #f7edec;
+}
 .home-page {
   background-image: var(--background-image) !important;
   transition: background-image 0.5s ease-in-out;
@@ -79,7 +76,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 0rem 2rem;
   max-width: 100%;
   height: auto;
   text-decoration: none;
