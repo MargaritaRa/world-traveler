@@ -4,11 +4,10 @@
 
 /* "montserrat_regular",sans-serif */
 
-.pacifico-regular {
-  font-family: "Pacifico", cursive;
-  font-weight: 400;
-  font-style: normal;
-}
+/* :root{
+  --primaryColor: hs1(199, 100%, 33%);
+
+} */
 .bitter{
   font-family: "Bitter", serif;
   font-optical-sizing: auto;
@@ -16,18 +15,8 @@
   font-style: normal;
 }
 
-/* // <uniquifier>: Use a unique and descriptive class name
-// <weight>: Use a value from 400 to 700 */
-
 .lora {
   font-family: "Lora", serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.playfair-display {
-  font-family: "Playfair Display", serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
@@ -45,7 +34,7 @@
   color: #913225;
 }
 body{
-  background-color: #f7edec;
+  background-color: #f7f6f6;
 }
 .home-page {
   background-image: var(--background-image) !important;
@@ -71,7 +60,7 @@ a {
 }
 /* Header styling */
 header {
-  font-family: "Bitter", serif;
+  font-family: "Poppins", serif;
   background-color: #fff;
   display: flex;
   justify-content: space-between;
@@ -97,6 +86,15 @@ header {
 
 .country-list-h2{
   font-family: "Playfair Display", serif;
+  margin: 20px 0px 15px;
+}
+
+.country-list-link{
+  border-radius: 20px;
+  width: auto;
+  color: white;
+  background: rgb(241,219,215);
+background: linear-gradient(90deg, rgba(241,219,215,1) 4%, rgba(145,50,37,1) 91%);
 }
 
 /* NavBar Styling*/
@@ -104,7 +102,8 @@ header {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  background-color: #913225;
+  color: #913225;
+  /* background-color: #913225; */
   padding: 10px;
 }
 
@@ -125,29 +124,80 @@ header {
 }
 
 /* Footer Styling */
-.footer{
-  font-family: "Kite One", sans-serif;
-  color: #fff;
-  background-color: #913225;
-  text-align: center;
-  padding: 2rem 0;
-  position: fixed;
+
+.footer {
   width: 100%;
-  bottom: 0;
-  left: 0;
-  display: grid;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  color: white;
 }
 
-.footer .footer-links {
+.videoDiv {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.videoDiv video {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.footer-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+}
+
+.footer-links {
   display: flex;
   gap: 1rem;
 }
-.footer_inner{
-  color: #e1ebdf;
+
+.footer_inner {
+  color: #913225;
+  text-decoration: none;
+  font-family: "Poppins", serif;
+  font-weight: 500;
 }
+
+.footer .footer-links .footer_inner:hover {
+  color: #000;
+}
+
+.videoDiv::after {
+  content: '';
+  position: absolute;
+  background: rgba(10, 84, 107, 0.307);
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  mix-blend-mode: multiply;
+}
+
+.footer-left,
+.footer-right {
+  flex: 1;
+}
+
+.footer-left {
+  text-align: left;
+}
+
+.footer-right {
+  text-align: right;
+}
+
+
 
 /* Destination Cards styling */
 .desContainer {
@@ -247,4 +297,7 @@ header {
   .search-results {
     width: 80%;
   }
+}
+.country-country-info-box{
+  margin-bottom: 5%;
 }

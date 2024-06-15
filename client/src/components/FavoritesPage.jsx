@@ -97,9 +97,9 @@ function FavoritesPage() {
     // console.log('Favorites:', favorites);
     // Render favorite countries
     const renderFavorites = (() => {
-      // console.log('Favorites:', favorites);
+      console.log('Favorites:', favorites);
       return favorites.map(fav => {
-        // console.log('Favorite:', fav);
+        console.log('Favorite:', fav);
         return (
           <Grid container spacing={2}>
         {favorites.map((fav) => (

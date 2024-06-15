@@ -41,11 +41,12 @@ function ContinentInfo({ name, population, languages, topCountries, religions, m
     return (
         
         <Box sx={{ flexGrow: 1 }} >
-            <Grid container spacing={2}>
-                {/* Box 1 */}
-                <Grid xs={12} md={5} lg={11}>
+            <Grid xs={12} md={5} lg={11}>
                     <Item>{name}</Item>
                 </Grid>
+            <Grid container spacing={2}>
+                {/* Box 1 */}
+                
                 {/* Box 2 */}
                 <Grid container xs={12} md={7} lg={11} spacing={4}>
                     <Grid xs={6} lg={3}>

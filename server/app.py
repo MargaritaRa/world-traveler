@@ -7,7 +7,7 @@ from flask_bcrypt import Bcrypt
 import os
 
 
-from models import db, User, Countries, Favorite
+from models import db, User, Countries, Favorite, NewsLetter
 
 from dotenv import load_dotenv
 
@@ -77,6 +77,12 @@ def login():
 def logout():
     session.pop('user_id')
     return {}, 204
+
+# Newsletter #
+@app.get(URL_PREFIX + '/newsletter')
+def all_newsletters():
+    return [news.to_dict() for news in NewsLetter.query.all()], 200
+
 
 #  Destination/Country cards routes #
 

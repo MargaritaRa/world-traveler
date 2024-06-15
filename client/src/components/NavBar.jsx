@@ -9,6 +9,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
+import AppsIcon from '@mui/icons-material/Apps';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined'; //login icon
@@ -107,7 +108,7 @@ export default function NavBar({ currentUser, logout }){
         
         <div className='nav-container'>
             <React.Fragment>
-                <MenuIcon onClick={
+                <AppsIcon onClick={
                     toggleDrawer('right', true)
                 } />
 

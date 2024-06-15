@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from app import app
-from models import db , Countries
+from models import db , Countries, NewsLetter
 
 
 
@@ -775,6 +775,15 @@ if __name__ == '__main__':
             foods = "Kebabs, Baklava, Meze, Dolma",
             links = "https://www.tripadvisor.com/Tourism-g293969-Turkey-Vacations.html"
             )
+        
+        n = NewsLetter(
+            title = "Should I leave my job and be a tour guide?",
+            location = "Asia",
+            message = "Many of us wanderlust often come across this, though at least once in our lives. Picture this: I leave my desk job and embark on a tour through Asia, highlighting my favorite restaurants and bars. Beginning each morning in paradise, living out my dream. Simple right. I’ve definitely considered this in the past. My idea developed into an obsession, and that obsession became a reality. That reality came crashing down really quickly. Could I have stayed? Ya, but was I happy? No. There’s a few things I didn’t think about one is how needy people can be, two is how I’ll be stuck working instead of traveling, three how I would end up with a manager from hell, and four how much I’ll dislike being a tour guide. While my story is quite long and could fill multiple chapters, there is one particular aspect I would like to mention. For those who have a strong wanderlust, I recommended to either keeping/finding a better job and travel during your free time.",
+            likes = 5
+            )
+        
+        countries.append(n)
 
 
 

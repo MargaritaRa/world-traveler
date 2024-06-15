@@ -76,4 +76,14 @@ class Favorite(db.Model, SerializerMixin):
     user = db.relationship('User', back_populates='favorites')
 
     serialize_rules = ('-favorites.user', '-favorites.countries',)
+
+class NewsLetter(db.Model, SerializerMixin):
+
+    __tablename__ = 'newsletter_table'
+
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String)
+    location = db.Column(db.String)
+    message = db.Column(db.String)
+    likes = db.Column(db.Integer)
     

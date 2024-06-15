@@ -1,4 +1,7 @@
 import {useState} from 'react'
+import Button from '@mui/material/Button';
+import Paper from "@mui/material/Paper";
+
 
 function Login({setCurrentUser}){
 
@@ -27,7 +30,7 @@ function Login({setCurrentUser}){
         }
 
     return (
-        <div>
+      <Paper>
             <form className='user-form' onSubmit={handleSubmit}>
 
                 <input 
@@ -45,15 +48,16 @@ function Login({setCurrentUser}){
                 value={password}
                 placeholder='password'
                 />
-
-                <input 
-                type="submit"
-                value='Login'
-                />
+                <Button>
+                  <input 
+                  type="submit"
+                  value='Login'
+                  />
+                </Button>
                 
             </form>
 
-        </div>
+        </Paper>
     )
 }
 

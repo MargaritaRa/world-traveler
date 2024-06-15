@@ -5,7 +5,7 @@ import Login from './Login';
 import CurrentUserContext from '../CurrentUserContext'
 
 // MUI //
-import Paper from '@mui/material/Paper';
+// import Paper from '@mui/material/Paper';
 
 function UserPanel() {
     
@@ -13,7 +13,7 @@ function UserPanel() {
 
   if (!currentUser) {
     return (
-      <Paper>
+      // <Paper>
         <div className='login-signup-container'>
           <div className='login-container'>
             <h2>Login</h2>
@@ -24,7 +24,7 @@ function UserPanel() {
             <Signup setCurrentUser={setCurrentUser} />
           </div>
         </div>
-      </Paper>
+      // </Paper>
     )
   } 
 }

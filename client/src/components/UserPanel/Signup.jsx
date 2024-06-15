@@ -1,5 +1,8 @@
 import { useState } from "react"
 
+import Button from '@mui/material/Button';
+import Paper from "@mui/material/Paper";
+
 function Signup({setCurrentUser}){
     //state
     const [username, setUsername] = useState('')
@@ -31,6 +34,7 @@ function Signup({setCurrentUser}){
     
     //Render
     return(
+      <Paper>
         <form className="user-form" onSubmit={handleSubmit}>
 
             <input 
@@ -49,11 +53,14 @@ function Signup({setCurrentUser}){
             placeholder="Password"
             />
 
+            <Button>
             <input 
             type="submit"
             value="signup"
             />
+            </Button>
         </form>
+      </Paper>
     )
 }
 
