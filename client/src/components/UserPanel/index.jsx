@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import Link from '@mui/material/Link';
 import CurrentUserContext from '../CurrentUserContext';
+
+import Link from '@mui/material/Link';
 import Avatar from '@mui/material/Avatar';
 import CssBaseline from '@mui/material/CssBaseline';
 import Paper from '@mui/material/Paper';
@@ -11,17 +12,17 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Login from './Login'
 import { red } from '@mui/material/colors';
 
-const primary = red[900];
 
+
+
+const primary = red[900];
 const defaultTheme = createTheme();
 
 function UserPanel() {
-  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
 
-  // if (!currentUser) {
+  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
 
   return (
     <ThemeProvider theme={defaultTheme}>

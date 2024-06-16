@@ -1,4 +1,5 @@
-import { useState } from "react"
+import {useState, useContext} from 'react';
+import { useNavigate} from 'react-router-dom';
 
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -11,17 +12,19 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Link from "@mui/material/Link";
-import { useNavigate } from 'react-router-dom';
 import { red } from '@mui/material/colors';
+
+import CurrentUserContext from '../CurrentUserContext';
 
 const primary = red[900];
 const defaultTheme = createTheme();
 
-function Signup({setCurrentUser}){
+function Signup(){
 
     //state
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState ('')
+    const { setCurrentUser } = useContext(CurrentUserContext);
     const navigate = useNavigate();
     
     //Event //
@@ -40,7 +43,8 @@ function Signup({setCurrentUser}){
             if (response.ok) {
               response.json()
               .then(newUser => setCurrentUser(newUser) )
-              console.log(username)
+              navigate('/userpanel')
+              // console.log(username)
             } else {
               alert("Signup unsuccessful")
             }
