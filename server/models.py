@@ -83,7 +83,8 @@ class NewsLetter(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String)
+    image = db.Column(db.String)
     location = db.Column(db.String)
     message = db.Column(db.String)
-    likes = db.Column(db.Integer)
+    likes = db.Column(db.Integer, default=0)
     

@@ -83,6 +83,13 @@ def logout():
 def all_newsletters():
     return [news.to_dict() for news in NewsLetter.query.all()], 200
 
+@app.post('/api/newsletter/<int:id>/like')
+def like_newsletter(id):
+    newsletter = NewsLetter.query.get_or_404(id)
+    newsletter.likes += 1
+    db.session.commit()
+    return jsonify({'likes': newsletter.likes})
+
 
 #  Destination/Country cards routes #
 

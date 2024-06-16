@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import videodr from '/image/videodr.mp4'
+
 import videoegypt2 from '/image/videoegypt2.mp4'
 
 // MUI //

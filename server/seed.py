@@ -776,24 +776,36 @@ if __name__ == '__main__':
             links = "https://www.tripadvisor.com/Tourism-g293969-Turkey-Vacations.html"
             )
         
+        countries.append(c)
+
+        db.session.add_all(countries)
+        db.session.commit()
+
+        NewsLetter.query.delete()
+        news = []
+
         n = NewsLetter(
             title = "Should I leave my job and be a tour guide?",
+            image = '/image/peru1.jpg',
             location = "Asia",
             message = "Many of us wanderlust often come across this, though at least once in our lives. Picture this: I leave my desk job and embark on a tour through Asia, highlighting my favorite restaurants and bars. Beginning each morning in paradise, living out my dream. Simple right. I’ve definitely considered this in the past. My idea developed into an obsession, and that obsession became a reality. That reality came crashing down really quickly. Could I have stayed? Ya, but was I happy? No. There’s a few things I didn’t think about one is how needy people can be, two is how I’ll be stuck working instead of traveling, three how I would end up with a manager from hell, and four how much I’ll dislike being a tour guide. While my story is quite long and could fill multiple chapters, there is one particular aspect I would like to mention. For those who have a strong wanderlust, I recommended to either keeping/finding a better job and travel during your free time.",
             likes = 5
             )
         
-        countries.append(n)
+        news.append(n)
+
+        n = NewsLetter(
+            title = "Is there a need to explore the world when the USA has it all?",
+            image = '/image/peru2.jpg',
+            location = "The world",
+            message = "If I received a penny every time someone asked me why I travel despite having America, I might not be wealthy, but I would certainly have a significant amount of money. Although I have a deep love for America, it is not the be-all and end-all. Why settle for a mere dollop of whipped cream when you have an entire cake right in front of you? Since the age of 21, I’ve been traveling nonstop. All of my travel experiences have made me wiser and stronger.The true beauty of traveling lies in the unknown. You can plan, calculate, and study, but there’s always an element of surprise. You can never anticipate the individuals you will encounter, the connections you will form, and the knowledge you will gain. Each time I return from a journey, I feel like I’ve discovered something new about myself; stepping out of your comfort zone can lead to that.Who cares about people’s opinions? If you have the desire to travel, simply go ahead and do it.",
+            likes = 35
+            )
+        
+        news.append(n)
 
 
-
-
-
-
-
-        countries.append(c)
-
-        db.session.add_all(countries)
+        db.session.add_all(news)
         db.session.commit()
 
         print("Seeding complete!")

@@ -197,7 +197,13 @@ background: linear-gradient(90deg, rgba(241,219,215,1) 4%, rgba(145,50,37,1) 91%
   text-align: right;
 }
 
-
+/* Newsletter */
+.newsletter-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
 
 /* Destination Cards styling */
 .desContainer {
