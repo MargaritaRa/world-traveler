@@ -12,6 +12,8 @@ import ErrorPage  from './components/ErrorPage.jsx'
 import Home from './components/Home.jsx'
 import UserPanel from './components/UserPanel/index.jsx'
 import IdDesContainer from './components/IdDesContainer.jsx';
+import Login from './components/UserPanel/Login.jsx';
+import Signup from './components/UserPanel/Signup.jsx';
 
 
 //  CSS
@@ -60,6 +62,16 @@ const routes = [
         path: 'userpanel',
         element: <UserPanel />,
         errorElement: <ErrorPage />
+      },
+      {
+        path: 'signup',
+        element: <Signup />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: 'login',
+        element: <Login />,
+        errorElement: <ErrorPage />,
       },
       {
         path: '*',

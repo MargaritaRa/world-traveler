@@ -11,13 +11,18 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Link from "@mui/material/Link";
+import { useNavigate } from 'react-router-dom';
+import { red } from '@mui/material/colors';
 
+const primary = red[900];
 const defaultTheme = createTheme();
+
 function Signup({setCurrentUser}){
 
     //state
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState ('')
+    const navigate = useNavigate();
     
     //Event //
     function handleSubmit(e){
@@ -54,7 +59,7 @@ function Signup({setCurrentUser}){
           sm={4}
           md={7}
           sx={{
-            backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
+            backgroundImage: 'url(/image/vietnam5.jpg)',
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
@@ -72,7 +77,7 @@ function Signup({setCurrentUser}){
               alignItems: 'center',
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <Avatar sx={{ m: 1, bgcolor: primary }}>
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
@@ -112,14 +117,9 @@ function Signup({setCurrentUser}){
                 Sign Up
               </Button>
               <Grid container>
-                <Grid item xs>
-                  <Link href="#" variant="body2">
-                    Forgot password?
-                  </Link>
-                </Grid>
                 <Grid item>
-                  <Link href="#" variant="body2">
-                    {"Don't have an account? Sign In"}
+                  <Link href="#" variant="body2" onClick={() => navigate('/login')}>
+                    {"Do have an account? Sign In"}
                   </Link>
                 </Grid>
               </Grid>
