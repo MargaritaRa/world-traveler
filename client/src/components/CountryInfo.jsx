@@ -132,8 +132,8 @@ function CountryInfo({ country, handleAddToFavorites, isFavorited }) {
                   id="Mannerism"
                   sx={{ fontSize: '12px', textTransform: 'uppercase' }}
                   >
-                  Language:
-                </Box>
+                
+                 Language: </Box>
               </Item>
               <Item2>
                 <Box component="ul" aria-labelledby="mannerism" sx={{ pl: 2 }}>
@@ -164,7 +164,8 @@ function CountryInfo({ country, handleAddToFavorites, isFavorited }) {
               </Grid>
               
               {/* Box 7 */} {/* row 3 */} 
-              <Grid xs={6} lg={3}>
+            <Grid container item xs={6} lg={8} spacing={2} direction="column">
+              <Grid xs={7} lg={3}>
               <Item>
                 <Box
                   id="Mannerism"
@@ -176,11 +177,11 @@ function CountryInfo({ country, handleAddToFavorites, isFavorited }) {
               <Item2>
                 <Box component="ul" aria-labelledby="mannerism" sx={{ pl: 2 }}>
                       {country.mannerism}
-                      </Box>
+                </Box>
               </Item2>
               </Grid>
               {/* Box 8 */}
-              <Grid xs={4} lg={3}>
+              <Grid xs={7} lg={3}>
               <Item>
                 <Box
                   id="Mannerism"
@@ -195,6 +196,7 @@ function CountryInfo({ country, handleAddToFavorites, isFavorited }) {
                 </Box>
               </Item2>
               </Grid>
+            </Grid>
               {/* Box 9 */} {/* row 4 */} 
               <Grid xs={4} lg={3}>
               <Item>
@@ -228,7 +230,7 @@ function CountryInfo({ country, handleAddToFavorites, isFavorited }) {
               </Item2>
               </Grid>
               {/* Box 12 */} {/* row 4 */} 
-              <Grid xs={6} lg={3}>
+              <Grid xs={4} lg={3}>
               <Item>
                 <Box
                   id="Mannerism"

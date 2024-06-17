@@ -5,6 +5,8 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
 import Divider from '@mui/material/Divider';
+import Card from '@mui/material/Card';
+import CardMedia from '@mui/material/CardMedia';
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -45,7 +47,7 @@ const Item = styled(Paper)(({ theme }) => ({
     marginTop: 5,
   }));
 
-function ContinentInfo({ name, population, languages, topCountries, religions, musicGenres, mannerisms, dosAndDonts }) {
+function ContinentInfo({ name, population, image, languages, topCountries, religions, musicGenres, mannerisms, dosAndDonts }) {
     return (
         
         <Box sx={{ flexGrow: 1 }} className="continent-continent-info-box">
@@ -62,7 +64,7 @@ function ContinentInfo({ name, population, languages, topCountries, religions, m
                 {/* Row 2 */}
                 {/* Box 2 */}
                 <Grid container xs={12} lg={3}>
-                    <Grid xs={4} lg={3}>
+                    <Grid xs={3} lg={3}>
                         <Item>
                             <Box
                                 id="population"
@@ -95,6 +97,23 @@ function ContinentInfo({ name, population, languages, topCountries, religions, m
                             <ul>{languages.map((language, index) => <li key={index}>{language}</li>)}</ul>
                             </Box>
                         </Item3> 
+                    </Grid>
+                     {/* Box 3 */}   
+                     <Grid xs={4} lg={3}>
+                        <Item>
+                            <Box id="language" sx={{ fontSize: '12px', textTransform: 'uppercase' }}>
+                                Map
+                            </Box>
+                        </Item>  
+                        <Item3>
+                        <Card sx={{ maxWidth: 345, backgroundColor: 'rgba(255, 255, 255, 0.7)', marginBottom: '1rem' }}>
+                            <CardMedia
+                                sx={{ height: 140 }}
+                                image={image}
+                                title={`${name} Map`}
+                            />
+                        </Card>
+                    </Item3>
                     </Grid>
                     {/* Box 4 */}
                     <Grid xs={4} lg={3}>

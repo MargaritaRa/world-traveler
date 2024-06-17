@@ -2,6 +2,7 @@
     const ContinentData = {
         Africa: {
             name: 'Africa',
+            image: '/image/conafrica.png',
             population: 'Africa has an estimated population of 1.3 billion people.',
             languages: [
                 'Arabic: Widely spoken in North Africa.',
@@ -55,6 +56,7 @@
         },
         Antarctica: {
             name: 'Antarctica',
+            image: '/image/conant.png',
             population: 'Antarctica has no permanent population, only temporary researchers and scientists.',
             languages: [
                 'English: Widely used for communication among international researchers.',
@@ -84,6 +86,7 @@
         },
         Asia: {
             name: 'Asia',
+            image: '/image/conasia.png',
             population: 'Asia has an estimated population of 4.6 billion people.',
             languages: [
                 'Mandarin: Widely spoken in China and Taiwan.',
@@ -139,6 +142,7 @@
         },
         Central_America_and_Caribbean: {
             name: 'Central America and Carribean',
+            image: '/image/concentral.png',
             population: 'The combined population of Central America and the Caribbean is approximately 90 million people. Central America alone has about 50 million people, while the Caribbean islands account for around 40 million​.',
             languages: [
                 'Spanish: Widely spoken in Central American countries and many Caribbean nations.',
@@ -197,6 +201,7 @@
         },
         Europe: {
             name: 'Europe',
+            image: '/image/coneurope.png',
             population: 'Europe has an estimated population of 746 million people.',
             languages: [
                 'English: Widely spoken as a second language.',
@@ -250,6 +255,7 @@
         },
         Middle_East: {
             name: 'Middle East',
+            image: '/image/conmiddle.png',
             population: 'The Middle East has an estimated population of 411 million people.',
             languages: [
                 'Arabic: Widely spoken across the region.',
@@ -302,6 +308,7 @@
         },
         Oceania: {
             name: 'Oceania',
+            image: '/image/conocean.png',
             population: 'Oceania has an estimated population of 42 million people.',
             languages: [
                 'English: Widely spoken across the region.',
@@ -353,6 +360,7 @@
         },
         North_America: {
             name: 'North America',
+            image: '/image/connorth.png',
             population: 'North America has an estimated population of 579 million people.',
             languages: [
                 'English: Widely spoken in the United States and Canada.',
@@ -403,6 +411,7 @@
         },
         South_America: {
             name: 'South America',
+            image: '/image/consouth.png',
             population: 'South America has an estimated population of 430 million people.',
             languages: [
                 'Spanish: Widely spoken in most countries.',

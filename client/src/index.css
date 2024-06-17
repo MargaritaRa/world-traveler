@@ -112,59 +112,10 @@ header {
 
 /* Footer Styling */
 
-/* .footer {
-  width: 100%;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  margin: auto;
-  color: white;
-}
-
-.videoDiv {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-}
-
-.videoDiv video {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
-
-.footer-content {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 1rem;
-}
-
-.footer-links {
-  color: white;
-  display: flex;
-  gap: 1rem;
-}
-
-.footer_inner {
-  color: #913225;
-  text-decoration: none;
-  font-family: "Poppins", serif;
-  font-weight: 500;
-}
-
-.footer .footer-links .footer_inner:hover {
-  color: #000;
-} */
 .footer{
   font-family: "Kite One", sans-serif;
   color: #fff;
   background-color: #fbfafa;
-  background: transparent;
   box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
   text-align: center;
   padding: 2rem 0;
@@ -176,6 +127,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
+  
 }
 
 .footer .footer-links {
@@ -184,7 +136,6 @@ header {
 }
 
 .footer_inner{
-  /* color: #e1ebdf; */
   color: #b15e54;
   text-decoration: none;
   font-family: "Poppins", serif;
