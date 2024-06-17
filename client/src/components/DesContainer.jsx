@@ -19,7 +19,7 @@ function DesContainer() {
     };
 
     return (
-        <div className='desContainer'>
+        <div >
             <ContinentList continent={Object.keys(ContinentData)} onSelect={handleContinentSelect} />
             <div className='main-content'>
                 {selectedContinent ? (

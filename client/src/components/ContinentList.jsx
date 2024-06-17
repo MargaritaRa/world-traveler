@@ -13,7 +13,7 @@ function ContinentList({ continent, onSelect }) {
     return (
         <div className="continent-list">
             <h2 className='country-list-h2'>All destinations</h2>
-            <Stack direction="column" spacing={.10}>
+            <Stack direction="row" spacing={2}>
                 {continent.map((continent, value) => (
                     <div key={value}>
                         <Button 

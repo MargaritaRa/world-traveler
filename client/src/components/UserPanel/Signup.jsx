@@ -123,7 +123,7 @@ function Signup(){
               <Grid container>
                 <Grid item>
                   <Link href="#" variant="body2" onClick={() => navigate('/login')}>
-                    {"Do have an account? Sign In"}
+                    {"Do you have an account? Sign In"}
                   </Link>
                 </Grid>
               </Grid>

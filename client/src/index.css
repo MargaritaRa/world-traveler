@@ -84,19 +84,6 @@ header {
   color: #913225;
 }
 
-.country-list-h2{
-  font-family: "Playfair Display", serif;
-  margin: 20px 0px 15px;
-}
-
-.country-list-link{
-  border-radius: 20px;
-  width: auto;
-  color: white;
-  background: rgb(241,219,215);
-background: linear-gradient(90deg, rgba(241,219,215,1) 4%, rgba(145,50,37,1) 91%);
-}
-
 /* NavBar Styling*/
 .nav-container {
   display: flex;
@@ -125,7 +112,7 @@ background: linear-gradient(90deg, rgba(241,219,215,1) 4%, rgba(145,50,37,1) 91%
 
 /* Footer Styling */
 
-.footer {
+/* .footer {
   width: 100%;
   position: relative;
   display: flex;
@@ -158,6 +145,7 @@ background: linear-gradient(90deg, rgba(241,219,215,1) 4%, rgba(145,50,37,1) 91%
 }
 
 .footer-links {
+  color: white;
   display: flex;
   gap: 1rem;
 }
@@ -171,6 +159,35 @@ background: linear-gradient(90deg, rgba(241,219,215,1) 4%, rgba(145,50,37,1) 91%
 
 .footer .footer-links .footer_inner:hover {
   color: #000;
+} */
+.footer{
+  font-family: "Kite One", sans-serif;
+  color: #fff;
+  background-color: #fbfafa;
+  background: transparent;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 2rem 0;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.footer .footer-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer_inner{
+  /* color: #e1ebdf; */
+  color: #b15e54;
+  text-decoration: none;
+  font-family: "Poppins", serif;
 }
 
 .videoDiv::after {
@@ -206,19 +223,32 @@ background: linear-gradient(90deg, rgba(241,219,215,1) 4%, rgba(145,50,37,1) 91%
 }
 
 /* Destination Cards styling */
-.desContainer {
-  display: flex;
+.country-country-info-box{
+  margin-bottom: 5%;
 }
-
-.contents-list{
-  width: 250px;
-  border-right: 1px solid #ccc;
-  padding: 10px;
+.continent-continent-info-box{
+  margin-bottom: 5%;
 }
 
 .country-list {
   width: 250px;
   padding: 10px;
+}
+.continent-list{
+  width: 250px;
+  padding: 10px;
+}
+.country-list-h2{
+  font-family: "Playfair Display", serif;
+  margin: 20px 0px 15px;
+}
+
+.country-list-link{
+  border-radius: 20px;
+  width: auto;
+  color: white;
+  background: rgb(241,219,215);
+  background: linear-gradient(90deg, rgba(241,219,215,1) 4%, rgba(145,50,37,1) 91%);
 }
 
 /* Search Bar stying */
@@ -304,6 +334,4 @@ background: linear-gradient(90deg, rgba(241,219,215,1) 4%, rgba(145,50,37,1) 91%
     width: 80%;
   }
 }
-.country-country-info-box{
-  margin-bottom: 5%;
-}
+

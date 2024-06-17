@@ -61,8 +61,7 @@ function Newsletter() {
           </CardContent>
           <Divider />
           <CardActions>
-            <Button size="small" onClick={() => handleLike(item.id)}>Like</Button>
-            <Button size="small">Learn More</Button>
+            <Button size="small" onClick={() => handleLike(item.id)} >Like</Button>
           </CardActions>
         </Card>
       ))}

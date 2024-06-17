@@ -51,7 +51,7 @@ const Item4 = styled(Paper)(({ theme }) => ({
   marginTop: 5,
 }));
 
-function CountryInfo({ country, handleAddToFavorites, favorites, isFavorited }) {
+function CountryInfo({ country, handleAddToFavorites, isFavorited }) {
 
     // const isFavorited = favorites && favorites.some((fav) => fav.country_id === country.id);
 
