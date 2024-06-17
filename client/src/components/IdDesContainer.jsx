@@ -18,7 +18,7 @@ function IdDesContainer() {
                 return resp.json();
             })
             .then((data) => {
-                console.log('Filtered countries:', data);
+                // console.log('Filtered countries:', data);
                 const filteredCountries = data.filter(country => country.continent.toLowerCase() === id.toLowerCase());
                 setCountries(filteredCountries);
             })
@@ -41,8 +41,23 @@ function IdDesContainer() {
         }
     }, [id]);
 
+    useEffect(() => {
+        fetch('/api/favorites')
+            .then((resp) => {
+                if (!resp.ok) {
+                    throw new Error('Failed to fetch favorites');
+                }
+                return resp.json();
+            })
+            .then((data) => {
+                setFavorites(data);
+            })
+            .catch((error) => console.error('Error fetching favorites:', error));
+    }, []);
+
+
     const handleCountrySelect = (countryId) => {
-        console.log('Selected country:', countryId);
+        // console.log('Selected country:', countryId);
         fetch(`/api/destinations/${countryId}`)
             .then((resp) => {
                 if (!resp.ok) {
@@ -57,7 +72,7 @@ function IdDesContainer() {
     }
 
     const handleAddToFavorites = (countryId, isAdding) => {
-        console.log('Adding to favorites:', countryId, isAdding);
+        // console.log('Adding to favorites:', countryId, isAdding);
         if (isAdding) {
             fetch('/api/favorites', {
                 method: 'POST',
@@ -73,7 +88,9 @@ function IdDesContainer() {
                 }
                 return response.json();
             })
-            .then(newFavorite => setFavorites(prevFavorites => [...prevFavorites, newFavorite]))
+            .then(newFavorite => {
+                setFavorites(prevFavorites => [...prevFavorites, newFavorite]);
+            })
             .catch(error => console.error('Error adding favorite:', error));
         } else {
             const favoriteToRemove = favorites.find(fav => fav.country_id === countryId);

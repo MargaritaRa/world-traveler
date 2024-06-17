@@ -60,7 +60,8 @@ def delete_user_by_id(id):
 def check_session():
     user = User.query.where(User.id == session.get('user_id')).first()
     if user:
-        return user.to_dict(), 200
+        favorites = [fav.to_dict() for fav in user.favorites]
+        return {'user': user.to_dict(), 'favorites': favorites}, 200
     else:
         return {}, 204
         
