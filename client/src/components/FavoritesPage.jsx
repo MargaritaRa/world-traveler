@@ -17,8 +17,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
-const primary = red[900]; // #f44336
-const accent = red['A100']; // #e040fb
+const primary = red[900];
 
 function FavoritesPage() {
     const [favorites, setFavorites] = useState([]);
@@ -76,12 +75,13 @@ function FavoritesPage() {
               throw new Error('Failed to save notes');
             }
             setNotification('Notes saved successfully');
-            console.log('Notes saved successfully');
+            // console.log('Notes saved successfully');
             setTimeout(() => setNotification(null), 5000);
           })
-          .catch(error => setError('Error saving notes: ' + error.message));
-          setNotification('Failed to save notes')
-          setTimeout(() => setError(null), 5000);
+          .catch(error => {
+            setError('Error saving notes: ' + error.message);
+            setTimeout(() => setError(null), 5000);
+        });
       };
 
       const handleNotesChange = (favoriteId, newNotes) => {
@@ -96,20 +96,15 @@ function FavoritesPage() {
 
     // console.log('Favorites:', favorites);
     // Render favorite countries
-    const renderFavorites = (() => {
-      console.log('Favorites:', favorites);
-      return favorites.map(fav => {
-        console.log('Favorite:', fav);
-        return (
-          <Grid container spacing={2}>
-        {favorites.map((fav) => (
+    const renderFavorites = () => {
+      return favorites.map(fav => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={fav.id}>
-            <Card sx={{ maxWidth: 345, fontFamily: "Dancing Script, cursive" }} >
+            <Card sx={{ maxWidth: 345, fontFamily: "Dancing Script, cursive" }}>
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
                   {fav.countries && fav.countries.name ? fav.countries.name : 'Unknown'}
                 </Typography>
-                <Typography variant="body2" color="text.secondary" sx={{ fontFamily: "Poppin", color: primary}}>
+                <Typography variant="body2" color="text.secondary" sx={{ fontFamily: "Poppin", color: primary }}>
                   <p>Continent: {fav.countries && fav.countries.continent ? fav.countries.continent : 'Unknown'}</p>
                   <p>Currency: {fav.countries && fav.countries.currency ? fav.countries.currency : 'Unknown'}</p>
                   <p>Language: {fav.countries && fav.countries.language ? fav.countries.language : 'Unknown'}</p>
@@ -122,22 +117,19 @@ function FavoritesPage() {
                 value={fav.notes}
                 onChange={(event) => handleNotesChange(fav.id, event.target.value)}
                 sx={{ fontFamily: "Dancing Script, cursive" }}
-                />
+              />
               <CardActions>
-                <Button sx={{ fontFamily: "Dancing Script, cursive", color:primary }} variant="outlined" endIcon={<SendIcon />} onClick={() => handleSaveNotes(fav.id)}>
+                <Button sx={{ fontFamily: "Dancing Script, cursive", color: primary }} variant="outlined" endIcon={<SendIcon />} onClick={() => handleSaveNotes(fav.id)}>
                   Save
                 </Button>
-                <Button  sx={{ fontFamily: "Dancing Script, cursive", color:primary }} variant="outlined" startIcon={<DeleteIcon />} onClick={() => handleDelete(fav.id)}>
+                <Button sx={{ fontFamily: "Dancing Script, cursive", color: primary }} variant="outlined" startIcon={<DeleteIcon />} onClick={() => handleDelete(fav.id)}>
                   Delete
                 </Button>
               </CardActions>
             </Card>
           </Grid>
-        ))}
-      </Grid>
-        );
-      });
-    })
+      ));
+    }
 
     return (
       <div>
@@ -145,7 +137,9 @@ function FavoritesPage() {
         {favorites.length === 0 ? (
             <p>No favorites yet!</p>
         ) : (
-            renderFavorites()
+            <Grid container spacing={2}>
+                {renderFavorites()}
+            </Grid>
         )}
         {notification && <Alert severity="success">{notification}</Alert>}
         {error && <Alert severity="error">{error}</Alert>}

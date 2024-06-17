@@ -7,8 +7,6 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
-// import Divider from '@mui/material/Divider';
-// import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
 import { red } from '@mui/material/colors';
 
@@ -53,9 +51,10 @@ const Item4 = styled(Paper)(({ theme }) => ({
   marginTop: 5,
 }));
 
-function CountryInfo({ country, handleAddToFavorites, favorites }) {
+function CountryInfo({ country, handleAddToFavorites, favorites, isFavorited }) {
 
-    const isFavorited = favorites.some(fav => fav.id === country.id);
+    // const isFavorited = favorites && favorites.some((fav) => fav.country_id === country.id);
+
 
     // console.log(country)
    
@@ -149,7 +148,11 @@ function CountryInfo({ country, handleAddToFavorites, favorites }) {
                   id="Currency"
                   sx={{ fontSize: '12px', textTransform: 'uppercase' }}
                   >
-                  <FavoritesButton countryId={country.id} isFavorited={isFavorited} handleAddToFavorites={handleAddToFavorites} />
+                  <FavoritesButton 
+                    countryId={country.id} 
+                    handleAddToFavorites={handleAddToFavorites} 
+                    isFavorited={isFavorited} 
+                  />
                 </Box>
               </Item>
               </Grid>

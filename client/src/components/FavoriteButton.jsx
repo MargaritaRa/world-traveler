@@ -7,15 +7,24 @@ function FavoritesButton({ countryId, handleAddToFavorites, isFavorited }) {
 
     const [favorited, setFavorited] = useState(isFavorited);
 
+    // useEffect(() => {
+    //   setFavorited(isFavorited);
+    // }, [isFavorited]);
+
     const handleClick = () => {
-        handleAddToFavorites(countryId, !favorited);
-        setFavorited(!favorited);
-    };
+      handleAddToFavorites(countryId, !favorited);
+      setFavorited(!favorited);
+  };
+
+  //   const handleClick = () => {
+  //     handleAddToFavorites(countryId, !isFavorited);
+  // };
+  // console.log(isFavorited)
 
 
   return (
     <IconButton onClick={handleClick}>
-        {favorited ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+        {isFavorited ? <FavoriteIcon color="error" /> : <FavoriteBorderIcon />}
     </IconButton>
   );
 }

@@ -4,7 +4,7 @@ import CountryInfo from './CountryInfo';
 import CountryList from './CountryList';
 
 function IdDesContainer() {
-    const { id } = useParams(); // `id` is the continent name in this case
+    const { id } = useParams();
     const [countries, setCountries] = useState([]);
     const [selectedCountry, setSelectedCountry] = useState(null);
     const [favorites, setFavorites] = useState([]);
@@ -18,6 +18,7 @@ function IdDesContainer() {
                 return resp.json();
             })
             .then((data) => {
+                console.log('Filtered countries:', data);
                 const filteredCountries = data.filter(country => country.continent.toLowerCase() === id.toLowerCase());
                 setCountries(filteredCountries);
             })
@@ -41,6 +42,7 @@ function IdDesContainer() {
     }, [id]);
 
     const handleCountrySelect = (countryId) => {
+        console.log('Selected country:', countryId);
         fetch(`/api/destinations/${countryId}`)
             .then((resp) => {
                 if (!resp.ok) {
@@ -54,39 +56,54 @@ function IdDesContainer() {
             .catch((error) => console.error('Error fetching country:', error));
     }
 
-    const handleAddToFavorites = (countryId) => {
-        fetch('/api/favorites', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                "Accept": 'application/json',
-            },
-            body: JSON.stringify({ country_id: countryId }),
-        })
-        .then((response) => {
-            if (response.ok) {
+    const handleAddToFavorites = (countryId, isAdding) => {
+        console.log('Adding to favorites:', countryId, isAdding);
+        if (isAdding) {
+            fetch('/api/favorites', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
+                body: JSON.stringify({ country_id: countryId }),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to add favorite');
+                }
                 return response.json();
+            })
+            .then(newFavorite => setFavorites(prevFavorites => [...prevFavorites, newFavorite]))
+            .catch(error => console.error('Error adding favorite:', error));
+        } else {
+            const favoriteToRemove = favorites.find(fav => fav.country_id === countryId);
+            if (favoriteToRemove) {
+                fetch(`/api/favorites/${favoriteToRemove.id}`, {
+                    method: 'DELETE',
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to remove favorite');
+                    }
+                    setFavorites(prevFavorites => prevFavorites.filter(fav => fav.id !== favoriteToRemove.id));
+                })
+                .catch(error => console.error('Error removing favorite:', error));
             }
-            throw new Error('Failed to add to favorites');
-        })
-        .then((data) => {
-            setFavorites([...favorites, data]);
-        })
-        .catch((error) => {
-            console.error('Error adding to favorites:', error);
-        });
-    }
+        }
+    };
+
 
     return (
-        <div className="idDesCon">
+        <div>
             <CountryList continent={id} countries={countries} onClick={handleCountrySelect} />
-            <div className="main-country">
-                {selectedCountry ? (
-                    <CountryInfo country={selectedCountry} favorites={favorites} handleAddToFavorites={handleAddToFavorites} />
-                ) : (
-                    <p>Please select a country to see the details</p>
-                )}
-            </div>
+            {selectedCountry && (
+                <CountryInfo
+                    country={selectedCountry}
+                    handleAddToFavorites={handleAddToFavorites}
+                    isFavorited={favorites.some(fav => fav.country_id === selectedCountry.id)}
+                    favorites={favorites}
+                />
+            )}
         </div>
     );
 }
