@@ -74,9 +74,25 @@ function CountryInfo({ country, handleAddToFavorites, isFavorited }) {
         </Grid>
           {/* xs is a total of 12 */}
           <Grid container spacing={2}>
+          <Grid container item xs={6} lg={8} spacing={2} direction="column">
             {/* Box 2 */}
+                 {/* Box 5 */}
+                 <Grid xs={2} lg={3}>
+              <Item>
+                <Box
+                  id="Currency"
+                  sx={{ fontSize: '12px', textTransform: 'uppercase' }}
+                  >
+                  <FavoritesButton 
+                    countryId={country.id} 
+                    handleAddToFavorites={handleAddToFavorites} 
+                    isFavorited={isFavorited} 
+                  />
+                </Box>
+              </Item>
+              </Grid>
               {/* Box 3 */} 
-              <Grid xs={2} lg={3}>
+              <Grid xs={4} lg={3}>
               <Item>
                 <Box id="Continent" sx={{ fontSize: '12px', textTransform: 'uppercase' }}>
                   Continent:
@@ -89,7 +105,7 @@ function CountryInfo({ country, handleAddToFavorites, isFavorited }) {
                 </Item2>
               </Grid>
               {/*Box 4  */} {/* row 2 */} 
-              <Grid xs={3} lg={3}>
+              <Grid xs={4} lg={3}>
               <Item>
                 <Box
                   id="Currency"
@@ -104,6 +120,14 @@ function CountryInfo({ country, handleAddToFavorites, isFavorited }) {
                 </Box>
               </Item2>
               </Grid>
+          </Grid>
+          {/* Box */}
+          <Grid xs={6} lg={4}>
+                <Item>
+                      <CountryImageList country={country.name} />
+                </Item>
+              </Grid>
+            
               {/* Box 6 */}
               <Grid xs={3} lg={3}>
               <Item>
@@ -140,27 +164,6 @@ function CountryInfo({ country, handleAddToFavorites, isFavorited }) {
                 {country.language}
                 </Box>
               </Item2>
-              </Grid>
-              {/* Box 5 */}
-              <Grid xs={1} lg={3}>
-              <Item>
-                <Box
-                  id="Currency"
-                  sx={{ fontSize: '12px', textTransform: 'uppercase' }}
-                  >
-                  <FavoritesButton 
-                    countryId={country.id} 
-                    handleAddToFavorites={handleAddToFavorites} 
-                    isFavorited={isFavorited} 
-                  />
-                </Box>
-              </Item>
-              </Grid>
-              {/* Box */}
-              <Grid xs={6} lg={4}>
-                <Item>
-                      <CountryImageList country={country.name} />
-                </Item>
               </Grid>
               
               {/* Box 7 */} {/* row 3 */} 

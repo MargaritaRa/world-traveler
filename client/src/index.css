@@ -58,6 +58,10 @@ a {
   color: #913225;
   text-decoration: inherit;
 }
+.link-links{
+  color: #913225;
+  text-decoration: inherit;
+}
 /* Header styling */
 header {
   font-family: "Poppins", serif;
@@ -117,30 +121,21 @@ header {
   color: #fff;
   background-color: #fbfafa;
   box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  padding: 2rem 0;
   position: fixed;
-  width: 100%;
+  justify-content: space-between;
+  /* align-items: center; */
+  padding: 1rem 2rem; 
   bottom: 0;
   left: 0;
+  width: 100%;
   display: grid;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  
+  place-items: center;
 }
 
 .footer .footer-links {
   display: flex;
   gap: 1rem;
 }
-
-.footer_inner{
-  color: #b15e54;
-  text-decoration: none;
-  font-family: "Poppins", serif;
-}
-
 .videoDiv::after {
   content: '';
   position: absolute;
@@ -150,19 +145,6 @@ header {
   right: 0;
   left: 0;
   mix-blend-mode: multiply;
-}
-
-.footer-left,
-.footer-right {
-  flex: 1;
-}
-
-.footer-left {
-  text-align: left;
-}
-
-.footer-right {
-  text-align: right;
 }
 
 /* Newsletter */
@@ -196,6 +178,7 @@ header {
 
 .country-list-link{
   border-radius: 20px;
+  padding: .25rem .75rem; 
   width: auto;
   color: white;
   background: rgb(241,219,215);

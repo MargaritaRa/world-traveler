@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
+import { useEffect } from 'react';
 import CurrentUserContext from '../CurrentUserContext';
 
 import Link from '@mui/material/Link';
@@ -14,15 +15,16 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
 
-
-
-
 const primary = red[900];
 const defaultTheme = createTheme();
 
 function UserPanel() {
 
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
+
+  useEffect(() => {
+    // console.log('Current user in UserPanel:', currentUser);
+  }, [currentUser]);
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -61,7 +63,7 @@ function UserPanel() {
               alignItems: 'center',
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <Avatar sx={{ m: 1, bgcolor: primary }}>
               <LockOutlinedIcon />
             </Avatar>
             {currentUser ? (
@@ -72,6 +74,7 @@ function UserPanel() {
                 <Button
                   variant="contained"
                   color="primary"
+                  className='country-list-link'
                   onClick={() => setCurrentUser(null)}
                   sx={{ mt: 3, mb: 2 }}
                 >
@@ -87,7 +90,7 @@ function UserPanel() {
                   component={RouterLink}
                   to="/login"
                   variant="contained"
-                  color="primary"
+                  className='country-list-link'
                   sx={{ mt: 3, mb: 2 }}
                 >
                   Login

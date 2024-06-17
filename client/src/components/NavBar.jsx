@@ -1,5 +1,7 @@
 import { Link} from 'react-router-dom'
 import * as React from 'react';
+import CurrentUserContext from './CurrentUserContext';
+
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
@@ -8,15 +10,20 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import MenuIcon from '@mui/icons-material/Menu';
 import AppsIcon from '@mui/icons-material/Apps';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined'; //login icon
+import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
 import PublicOutlinedIcon from '@mui/icons-material/PublicOutlined';
 import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
 
-export default function NavBar({ currentUser, logout }){
+export default function NavBar(){
+
+    const { currentUser, logout } = React.useContext(CurrentUserContext)
+
+    React.useEffect(() => {
+        // console.log('Current user in NavBar:', currentUser);
+      }, [currentUser]);
 
     const [state, setState] = React.useState({
         top: false,
@@ -40,7 +47,7 @@ export default function NavBar({ currentUser, logout }){
           onClick={toggleDrawer(anchor, false)}
           onKeyDown={toggleDrawer(anchor, false)}
         >
-          <List>
+        <List>
           {!currentUser && (
                     <ListItem disablePadding>
                         <ListItemButton component={Link} to="/userpanel">

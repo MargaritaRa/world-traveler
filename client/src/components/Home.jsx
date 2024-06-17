@@ -34,7 +34,7 @@ function Home() {
             'url(/image/vietnam1.jpg)',
         ];
         const randomImage = images[Math.floor(Math.random() * images.length)];
-        console.log('Selected background image:', randomImage);
+        // console.log('Selected background image:', randomImage);
         document.documentElement.style.setProperty('--background-image', randomImage);
 
     return () => {
