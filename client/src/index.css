@@ -36,6 +36,7 @@
 body{
   background-color: #f7f6f6;
 }
+ /* <Grid container item xs={6} lg={8} spacing={2} direction="column"> */
 .home-page {
   background-image: var(--background-image) !important;
   transition: background-image 0.5s ease-in-out;

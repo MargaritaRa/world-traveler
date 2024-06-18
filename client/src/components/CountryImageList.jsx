@@ -3,6 +3,8 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import IconButton from '@mui/material/IconButton';
+import ListSubheader from '@mui/material/ListSubheader'
+import {red} from '@mui/material/colors'
 
 
 const slideShow = {
@@ -113,9 +115,11 @@ const slideShow = {
 function CountryImageList({ country }) {
    
     const images = slideShow[country] || [];
+
+    const primary =red[50]
     
     return (
-            <ImageList sx={{ width: 500, height: 450 }}>
+            <ImageList  sx={{ width: 700, height: 450, overflowY: 'scroll', color:'black' }} variant="woven" cols={3} gap={8}>
                 {/* <ImageListItem key="Subheader" cols={2}>
                     <ListSubheader component="div">{country}</ListSubheader>
                 </ImageListItem> */}
@@ -127,7 +131,7 @@ function CountryImageList({ country }) {
                             alt={item.name}
                             loading="lazy"
                         />
-                        <ImageListItemBar
+                        {/* <ImageListItemBar
                             title={item.name}
                             actionIcon={
                                 <IconButton
@@ -136,7 +140,7 @@ function CountryImageList({ country }) {
                                 >
                                 </IconButton>
                             }
-                        />
+                        /> */}
                     </ImageListItem>
                 ))}
             </ImageList>
@@ -146,3 +150,45 @@ function CountryImageList({ country }) {
     
   
   export default CountryImageList;
+
+  //   function CountryImageList({ country }) {
+   
+//     const images = slideShow[country] || [];
+//     function srcset(image, size, rows = 1, cols = 1) {
+//         return {
+//           src: `${image}?w=${size * cols}&h=${size * rows}&fit=crop&auto=format`,
+//           srcSet: `${image}?w=${size * cols}&h=${size * rows}&fit=crop&auto=format&dpr=2 2x`,
+//         };
+//       }
+    
+//     return (
+//             <ImageList sx={{ width: 700, height: 450 }}
+//                 variant="quilted"
+//                 cols={4}
+//                 rowHeight={121}>
+//                 {/* <ImageListItem key="Subheader" cols={2}>
+//                     <ListSubheader component="div">{country}</ListSubheader>
+//                 </ImageListItem> */}
+//                 {images.map((item) => (
+//                     <ImageListItem key={item.img} cols={item.cols || 1} rows={item.rows || 1}>
+//                         <img
+//                            {...srcset(item.img, 121, item.rows, item.cols)}
+//                             src={`${item.img}?w=248&fit=crop&auto=format`}
+//                             alt={item.name}
+//                             loading="lazy"
+//                         />
+//                         <ImageListItemBar
+//                             title={item.name}
+//                             actionIcon={
+//                                 <IconButton
+//                                     sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
+//                                     aria-label={`info about ${item.name}`}
+//                                 >
+//                                 </IconButton>
+//                             }
+//                         />
+//                     </ImageListItem>
+//                 ))}
+//             </ImageList>
+//         );
+//     }
