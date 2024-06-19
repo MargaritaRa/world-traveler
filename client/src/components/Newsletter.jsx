@@ -7,9 +7,13 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import { red } from '@mui/material/colors';
 
 function Newsletter() {
   const [news, setNews] = useState([]);
+
+  const color = red[900];
 
   useEffect(() => {
     fetch('/api/newsletter')
@@ -52,17 +56,25 @@ function Newsletter() {
             </div>
             <Divider />
             <Typography variant="body2" color="text.secondary">
-              {item.message}
+              {item.message1}
+            </Typography>
+            <br/>
+            <Typography variant="body2" color="text.secondary">
+              {item.message2}
+            </Typography>
+            <br/>
+            <Typography variant="body2" color="text.secondary">
+              {item.message3}
             </Typography>
             <Divider />
-            <Typography variant="body2" color="text.secondary">
-              Likes: {item.likes}
-            </Typography>
           </CardContent>
           <Divider />
           <CardActions>
-            <Button size="small" onClick={() => handleLike(item.id)} >Like</Button>
+            <Button size="small" onClick={() => handleLike(item.id)} ><ThumbUpIcon sx={{ color:color }}/></Button>
           </CardActions>
+          <Typography variant="body2" color="text.secondary">
+              Likes: {item.likes}
+            </Typography>
         </Card>
       ))}
     </div>

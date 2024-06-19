@@ -7,7 +7,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 import Divider from '@mui/material/Divider';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
-import Popover from '@mui/material/Popover';
+
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -108,19 +108,12 @@ function ContinentInfo({ name, population, image, languages, topCountries, relig
                         </Item>  
                         <Item3>
                         <Card sx={{ maxWidth: 345, backgroundColor: 'rgba(255, 255, 255, 0.7)', marginBottom: '1rem' }}>
-                            <Popover
-                                transformOrigin={{
-                                vertical: 'center',
-                                horizontal: 'center',
-                                }}
-                            >
                                 <CardMedia
                                     sx={{ height: 140 }}
                                     image={image}
                                     title={`${name} Map`}
                                 />
-                            </Popover>
-                           
+
                         </Card>
                     </Item3>
                     </Grid>

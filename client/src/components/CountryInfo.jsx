@@ -62,9 +62,195 @@ function CountryInfo({ country, handleAddToFavorites, isFavorited }) {
     // console.log('Image URL:', imageUrl);
 
     return (
+      <Box sx={{ flexGrow: 1 }} className="country-country-info-box">
+      <Grid container spacing={2}>
+        <Grid item xs={12}>
+          <Item4>
+            <Box id="country" sx={{ fontSize: '20px', fontFamily: "Merienda, serif" }}>
+              {country.name}
+            </Box>
+          </Item4>
+        </Grid>
 
-      <Box sx={{ flexGrow: 1}} className="country-country-info-box" >
-        {/* Box 1 */}
+        <Grid item xs={12} md={6} lg={3}>
+          <Item>
+            <Box id="Continent" sx={{ fontSize: '12px', textTransform: 'uppercase' }}>
+              Continent:
+            </Box>
+          </Item>
+          <Item2>
+            <Box component="ul" aria-labelledby="continent" sx={{ pl: 2 }}>
+              {country.continent}
+            </Box>
+          </Item2>
+        </Grid>
+
+        <Grid item xs={12} md={6} lg={3}>
+          <Item>
+            <Box id="Currency" sx={{ fontSize: '12px', textTransform: 'uppercase' }}>
+              Currency:
+            </Box>
+          </Item>
+          <Item2>
+            <Box component="ul" aria-labelledby="Currency" sx={{ pl: 2 }}>
+              {country.currency}
+            </Box>
+          </Item2>
+        </Grid>
+
+        <Grid item xs={12} md={6} lg={3}>
+          <Item>
+            <Box id="Visa" sx={{ fontSize: '12px', textTransform: 'uppercase' }}>
+              Visa:
+            </Box>
+          </Item>
+          <Item3>
+            <Button 
+              size='small'
+              variant='text' 
+              sx={{ fontFamily: "Poppins", color: primary }} 
+              href={country.visa}
+            >
+              Visa Embassy Link
+            </Button>
+          </Item3>
+        </Grid>
+
+        <Grid item xs={12} md={6} lg={3}>
+          <Item>
+            <Box sx={{ fontSize: '12px', textTransform: 'uppercase' }}>
+              <FavoritesButton 
+                countryId={country.id} 
+                handleAddToFavorites={handleAddToFavorites} 
+                isFavorited={isFavorited} 
+              />
+            </Box>
+          </Item>
+        </Grid>
+
+        <Grid container item xs={6} md={6} lg={6} direction="column">
+          <Grid item>
+            <Item>
+              <Box id="Images" sx={{ fontSize: '12px', textTransform: 'uppercase' }}>
+                Images:
+              </Box>
+            </Item>
+            <Item2>
+              <Box component="ul" aria-labelledby="Images" sx={{ pl: 2 }}>
+                <CountryImageList country={country.name} />
+              </Box>
+            </Item2>
+          </Grid>
+        </Grid>
+
+        <Grid container item xs={6} md={3} lg={6} spacing={3} direction="column">
+          <Grid item>
+            <Item>
+              <Box id="Language" sx={{ fontSize: '12px', textTransform: 'uppercase' }}>
+                Language:
+              </Box>
+            </Item>
+            <Item2>
+              <Box component="ul" aria-labelledby="Language" sx={{ pl: 2 }}>
+                {country.language}
+              </Box>
+            </Item2>
+          </Grid>
+
+          <Grid item>
+            <Item>
+              <Box id="Mannerism" sx={{ fontSize: '12px', textTransform: 'uppercase' }}>
+                Mannerism:
+              </Box>
+            </Item>
+            <Item2>
+              <Box component="ul" aria-labelledby="Mannerism" sx={{ pl: 2 }}>
+                {country.mannerism}
+              </Box>
+            </Item2>
+          </Grid>
+        
+
+        <Grid item>
+          <Item>
+            <Box id="Tipping" sx={{ fontSize: '12px', textTransform: 'uppercase' }}>
+              Tipping:
+            </Box>
+          </Item>
+          <Item2>
+            <Box component="ul" aria-labelledby="Tipping" sx={{ pl: 2 }}>
+              {country.tipping}
+            </Box>
+          </Item2>
+        </Grid>
+        </Grid>
+
+        <Grid item xs={12} md={6} lg={4}>
+          <Item>
+            <Box id="When" sx={{ fontSize: '12px', textTransform: 'uppercase' }}>
+              When:
+            </Box>
+          </Item>
+          <Item2>
+            <Box component="ul" aria-labelledby="When" sx={{ pl: 2 }}>
+              {country.when}
+            </Box>
+          </Item2>
+        </Grid>
+
+        <Grid item xs={12} md={6} lg={4}>
+          <Item>
+            <Box id="Phrases" sx={{ fontSize: '12px', textTransform: 'uppercase' }}>
+              Phrases:
+            </Box>
+          </Item>
+          <Item2>
+            <Box component="ul" aria-labelledby="Phrases" sx={{ pl: 2 }}>
+              {country.phrases}
+            </Box>
+          </Item2>
+        </Grid>
+
+        <Grid item xs={12} md={6} lg={4}>
+          <Item>
+            <Box id="Foods" sx={{ fontSize: '12px', textTransform: 'uppercase' }}>
+              Foods:
+            </Box>
+          </Item>
+          <Item2>
+            <Box component="ul" aria-labelledby="Foods" sx={{ pl: 2 }}>
+              {country.foods}
+            </Box>
+          </Item2>
+        </Grid>
+
+        <Grid item xs={12} md={6} lg={4}>
+          <Item>
+            <Box id="Links" sx={{ fontSize: '12px', textTransform: 'uppercase' }}>
+              Links:
+            </Box>
+          </Item>
+          <Item3>
+            <Button 
+              size='small'
+              variant='text' 
+              sx={{ fontFamily: "Poppins", color: primary }} 
+              href={country.links}
+            >
+              Trip Advisor
+            </Button>
+          </Item3>
+        </Grid>
+      </Grid>
+    </Box>
+      
+    )
+}
+
+export default CountryInfo;
+
+{/* <Box sx={{ flexGrow: 1}} className="country-country-info-box" >
+        {/* Box 1 
         <Grid xs={12} md={5} lg={12}>
           <Item4>
             <Box id="country" sx={{ fontSize: '20px', fontFamily: "Merienda, serif"}}>
@@ -73,7 +259,7 @@ function CountryInfo({ country, handleAddToFavorites, isFavorited }) {
           </Item4>
         </Grid>
           <Grid container spacing={2}>
-              {/* Box 3 */} 
+              {/* Box 3 *
               <Grid xs={3} lg={3}>
               <Item>
                 <Box id="Continent" sx={{ fontSize: '12px', textTransform: 'uppercase' }}>
@@ -86,7 +272,7 @@ function CountryInfo({ country, handleAddToFavorites, isFavorited }) {
                     </Box>
                 </Item2>
               </Grid>
-              {/*Box 4  */} {/* row 2 */} 
+              {/*Box 4 
               <Grid xs={4} lg={3}>
               <Item>
                 <Box
@@ -102,7 +288,7 @@ function CountryInfo({ country, handleAddToFavorites, isFavorited }) {
                 </Box>
               </Item2>
               </Grid>
-              {/* Box 6 */}
+              {/* Box 6 
               <Grid xs={3} lg={3}>
               <Item>
                 <Box
@@ -123,7 +309,7 @@ function CountryInfo({ country, handleAddToFavorites, isFavorited }) {
                 </Button>
               </Item3>
               </Grid>
-              {/* Box 5 */}
+              {/* Box 5 
               <Grid xs={2} lg={3}>
               <Item>
                 <Box
@@ -138,8 +324,8 @@ function CountryInfo({ country, handleAddToFavorites, isFavorited }) {
                 </Box>
               </Item>
               </Grid>
-              {/* Box */}
-          <Grid xs={8} lg={4}>
+              {/* Box 
+          <Grid xs={6} lg={4}>
               <Item>
                   <Box
                     id="Currency"
@@ -155,7 +341,7 @@ function CountryInfo({ country, handleAddToFavorites, isFavorited }) {
               </Item2>
               </Grid>
             <Grid container item xs={4} lg={8} spacing={2} direction="column">
-              {/* Box 13 */}
+              {/* Box 13 
               <Grid xs={8} lg={3}>
               <Item>
                 <Box
@@ -171,7 +357,7 @@ function CountryInfo({ country, handleAddToFavorites, isFavorited }) {
                 </Box>
               </Item2>
               </Grid>
-              {/* Box 7 */} {/* row 3 */} 
+              {/* Box 7 
             
               <Grid xs={8} lg={3}>
               <Item>
@@ -189,7 +375,7 @@ function CountryInfo({ country, handleAddToFavorites, isFavorited }) {
               </Item2>
               </Grid>
               </Grid>
-              {/* Box 8 */}
+              {/* Box 8 
            <Grid xs={4} lg={3}>
               <Item>
                 <Box
@@ -206,7 +392,7 @@ function CountryInfo({ country, handleAddToFavorites, isFavorited }) {
               </Item2>
               </Grid>
             
-              {/* Box 9 */} {/* row 4 */} 
+              {/* Box 9 
               <Grid xs={4} lg={3}>
               <Item>
                 <Box
@@ -222,7 +408,7 @@ function CountryInfo({ country, handleAddToFavorites, isFavorited }) {
                 </Box>
               </Item2>
               </Grid>
-              {/* Box 11 */}
+              {/* Box 11 
               <Grid xs={4} lg={3}>
               <Item>
                 <Box
@@ -238,7 +424,7 @@ function CountryInfo({ country, handleAddToFavorites, isFavorited }) {
                 </Box>
               </Item2>
               </Grid>
-              {/* Box 12 */} {/* row 4 */} 
+              {/* Box 12 
               <Grid xs={4} lg={3}>
               <Item>
                 <Box
@@ -254,7 +440,7 @@ function CountryInfo({ country, handleAddToFavorites, isFavorited }) {
                 </Box>
               </Item2>
               </Grid>
-            {/* Box 10 */}
+            {/* Box 10 
             <Grid xs={2} lg={3}>
               <Item>
                 <Box
@@ -276,8 +462,4 @@ function CountryInfo({ country, handleAddToFavorites, isFavorited }) {
               </Item3>
               </Grid>
             </Grid>
-      </Box>
-    )
-}
-
-export default CountryInfo;
+      </Box> */}
