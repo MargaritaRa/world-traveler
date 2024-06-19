@@ -1,17 +1,52 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-# world-traveler
+# Around the World- informative website
+### Margarita Ramirez
 
 
-Here’s a breakdown of the steps:
+## Overview
+Welcome to my capstone project! This product provides an online platform for travelers looking for information on travel tips and tricks. Below are the detailed steps to set up and run the project.
 
-ContinentList: Lists the continents and handles continent selection.
-ContinentInfo: Displays detailed information about the selected continent.
-CountriesCard: Displays country details.
-DesContainer: Main container that ties everything together.
+
+## Running the Application
+
+
+### Terminal 1 Backend Setup:
+
+
+1. Install dependencies:
+```
+npm install
+```
+2. Set up Python environment and dependencies:
+```
+pipenv install
+
+pipenv shell
+
+```
+
+3. Next navigate into the server directory and start the backend server:
+```
+cd server
+
+python seed.py
+
+python app.py
+```
+### Terminal 2: Frontend Setup
+
+
+1. Navigate to the client directory:
+```
+cd client
+```
+2. Start the frontend development server:
+```
+npm run dev
+```
+
+
+
+## Notes
++ Feel free to sign up and and start saving countries to your favorite route. as well as leave a like for your liked newsletters
++ Ensure all commands are executed in the correct order as specified.
++ If you encounter any issues during setup, verify that all dependencies are correctly installed and that you are running the commands in the appropriate directories.
