@@ -8,7 +8,8 @@ function IdDesContainer() {
     const [countries, setCountries] = useState([]);
     const [selectedCountry, setSelectedCountry] = useState(null);
     const [favorites, setFavorites] = useState([]);
-
+    const [selectedCategory, setSelectedCategory] = useState('all')
+    
     useEffect(() => {
         fetch('/api/destinations')
             .then((resp) => {
@@ -54,6 +55,17 @@ function IdDesContainer() {
             })
             .catch((error) => console.error('Error fetching favorites:', error));
     }, []);
+
+    const handleCategoryChange = (event) => {
+        setSelectedCategory(event.target.value)
+    }
+
+    const filteredCountries = countries.filter(country => {
+        if (selectedCategory === 'all') {
+            return true;
+        }
+        return country[selectedCategory] !== undefined;
+    });
 
 
     const handleCountrySelect = (countryId) => {
@@ -112,7 +124,13 @@ function IdDesContainer() {
 
     return (
         <div>
-            <CountryList continent={id} countries={countries} onClick={handleCountrySelect} />
+            <select value={selectedCategory} onChange={handleCategoryChange}>
+                <option value="all">All</option>
+                <option value="currency">Currency</option>
+                <option value="visa">Visa</option>
+                <option value="mannerism">Mannerism</option>
+            </select>
+            <CountryList continent={id} countries={filteredCountries} onClick={handleCountrySelect} />
             {selectedCountry && (
                 <CountryInfo
                     country={selectedCountry}
