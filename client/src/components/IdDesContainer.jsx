@@ -19,7 +19,7 @@ function IdDesContainer() {
                 return resp.json();
             })
             .then((data) => {
-                // console.log('Filtered countries:', data);
+                console.log('Filtered countries:', data);
                 const filteredCountries = data.filter(country => country.continent.toLowerCase() === id.toLowerCase());
                 setCountries(filteredCountries);
             })
@@ -84,7 +84,7 @@ function IdDesContainer() {
     }
 
     const handleAddToFavorites = (countryId, isAdding) => {
-        // console.log('Adding to favorites:', countryId, isAdding);
+        console.log('Adding to favorites:', countryId, isAdding);
         if (isAdding) {
             fetch('/api/favorites', {
                 method: 'POST',
@@ -130,7 +130,7 @@ function IdDesContainer() {
                 <option value="visa">Visa</option>
                 <option value="mannerism">Mannerism</option>
             </select>
-            <CountryList continent={id} countries={filteredCountries} onClick={handleCountrySelect} />
+            <CountryList continent={id} countries={countries} onClick={handleCountrySelect} />
             {selectedCountry && (
                 <CountryInfo
                     country={selectedCountry}
