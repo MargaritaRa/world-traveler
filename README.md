@@ -40,7 +40,12 @@ python app.py
 ```
 cd client
 ```
-2. Start the frontend development server:
+2. Install Mui Styling:
+```
+npm install @mui/material @emotion/react @emotion/styled
+npm install @mui/icons-material
+```
+3. Start the frontend development server:
 ```
 npm run dev
 ```

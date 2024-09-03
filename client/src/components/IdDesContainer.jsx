@@ -124,12 +124,12 @@ function IdDesContainer() {
 
     return (
         <div>
-            <select value={selectedCategory} onChange={handleCategoryChange}>
+            {/* <select value={selectedCategory} onChange={handleCategoryChange}>
                 <option value="all">All</option>
                 <option value="currency">Currency</option>
                 <option value="visa">Visa</option>
                 <option value="mannerism">Mannerism</option>
-            </select>
+            </select> */}
             <CountryList continent={id} countries={countries} onClick={handleCountrySelect} />
             {selectedCountry && (
                 <CountryInfo
@@ -139,6 +139,7 @@ function IdDesContainer() {
                     favorites={favorites}
                 />
             )}
+            <div>Jelou</div>
         </div>
     );
 }
