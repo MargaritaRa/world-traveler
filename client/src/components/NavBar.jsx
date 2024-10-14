@@ -99,6 +99,14 @@ export default function NavBar(){
                 </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
+                <ListItemButton component={Link} to="/photos">
+                    <ListItemIcon>
+                        <ArticleOutlinedIcon />
+                    </ListItemIcon>
+                    <ListItemText primary={"Tell Me About It"}/>
+                </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
                 <ListItemButton component={Link} to="/newsletter">
                     <ListItemIcon>
                         <ArticleOutlinedIcon />

@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 
 from app import app
-from models import db , Countries, NewsLetter
-
+from models import db , Countries, NewsLetter, Photo
+from datetime import datetime
+from faker import Faker
 
 
 
@@ -808,8 +809,37 @@ if __name__ == '__main__':
         
         news.append(n)
 
-
         db.session.add_all(news)
+        db.session.commit()
+
+        Photo.query.delete()
+        photos = []
+
+        p = Photo(
+            image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwq6pGZwB3rsEE0Bsj6zW9GWuz7JzYFgEqrg&s",
+            caption = "Flamingo",
+            created_at= datetime.now(),
+            user_id = 5
+            )
+        photos.append(p)
+
+        p = Photo(
+            image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwq6pGZwB3rsEE0Bsj6zW9GWuz7JzYFgEqrg&s",
+            caption = "Flamingo",
+            created_at= datetime.now(),
+            user_id = 5
+            )
+        photos.append(p)
+
+        p = Photo(
+            image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwq6pGZwB3rsEE0Bsj6zW9GWuz7JzYFgEqrg&s",
+            caption = "Flamingo",
+            created_at= datetime.now(),
+            user_id = 5
+            )
+        photos.append(p)
+
+        db.session.add_all(photos)
         db.session.commit()
 
         print("Seeding complete!")

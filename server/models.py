@@ -3,6 +3,8 @@ from sqlalchemy import MetaData
 from sqlalchemy.orm import validates
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.associationproxy import association_proxy
+from datetime import datetime, timezone
+
 
 metadata = MetaData(naming_convention={
     "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
@@ -19,6 +21,7 @@ class User(db.Model, SerializerMixin):
     _hashed_password = db.Column(db.String, nullable=False)
 
     favorites = db.relationship('Favorite', back_populates='user')
+    photos = db.relationship('Photo', back_populates='user')
 
     country_names = association_proxy('favorites', 'countries')
 
@@ -89,4 +92,22 @@ class NewsLetter(db.Model, SerializerMixin):
     message2 = db.Column(db.String)
     message3 = db.Column(db.String)
     likes = db.Column(db.Integer, default=0)
-    
+
+class Photo(db.Model, SerializerMixin):
+
+    __tablename__ = 'photo_table'
+
+    id = db.Column(db.Integer, primary_key=True)
+    image = db.Column(db.String, nullable=False)
+    caption = db.Column(db.String, nullable=True)
+    created_at = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
+    user_id = db.Column(db.Integer, db.ForeignKey('users_table.id'), nullable=False)
+
+    user = db.relationship('User', back_populates='photos')
+
+class Like(db.Model, SerializerMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    created_at = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
+
+    user_id = db.Column(db.Integer, db.ForeignKey('users_table.id'), nullable=False)
+    photo_id = db.Column(db.Integer, db.ForeignKey('photo_table.id'), nullable=False)

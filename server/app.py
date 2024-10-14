@@ -1,4 +1,4 @@
-from flask import Flask, request, session, jsonify
+from flask import Flask, request, session, jsonify, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_cors import CORS
@@ -7,7 +7,7 @@ from flask_bcrypt import Bcrypt
 import os
 
 
-from models import db, User, Countries, Favorite, NewsLetter
+from models import db, User, Countries, Favorite, NewsLetter, Photo, Like
 
 from dotenv import load_dotenv
 
@@ -18,11 +18,11 @@ app.secret_key = os.environ.get('SECRET_KEY')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.json.compact = False
+app.config['UPLOAD_FOLDER'] = 'uploads/'
 
 CORS(app)
 
 bcrypt = Bcrypt(app)
-
 migrate = Migrate(app, db)
 
 db.init_app(app)
@@ -158,8 +158,55 @@ def update_favorite_notes(id):
             return {'error': 'Failed to update favorite notes'}, 500
     else:
         return {'error': 'Favorite not found'}, 404
-
     
+# Photo feature and upload
+
+# List Photos Route
+@app.get('/api/photos')
+def list_photos():
+    photos = Photo.query.all()
+    return [photo.to_dict() for photo in photos], 200
+
+# File Upload Route
+@app.post('/api/photos/upload')
+def upload_photo():
+    if 'file' not in request.files:
+        return {'error': 'No file provided'}, 400
+    file = request.files['file']
+    if file.filename == '':
+        return {'error': 'No selected file'}, 400
+    
+    # Save the file locally
+    file_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
+    file.save(file_path)
+
+    # Create a Photo entry in the database
+    new_photo = Photo(user_id=session.get('user_id'), file_path=file_path)
+    db.session.add(new_photo)
+    db.session.commit()
+
+    return new_photo.to_dict(), 201
+
+# Like Photo Route
+@app.post('/api/photos/<int:photo_id>/like')
+def like_photo(photo_id):
+    user_id = session.get('user_id')
+    if not user_id:
+        return {'error': 'Unauthorized'}, 401
+
+    # Check if the user has already liked the photo
+    existing_like = Like.query.filter_by(user_id=user_id, photo_id=photo_id).first()
+    if existing_like:
+        return {'error': 'Already liked'}, 400
+
+    # Add like
+    new_like = Like(user_id=user_id, photo_id=photo_id)
+    db.session.add(new_like)
+    db.session.commit()
+
+    return new_like.to_dict(), 201
+
+
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)

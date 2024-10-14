@@ -14,14 +14,17 @@ import UserPanel from './components/UserPanel/index.jsx'
 import IdDesContainer from './components/IdDesContainer.jsx';
 import Login from './components/UserPanel/Login.jsx';
 import Signup from './components/UserPanel/Signup.jsx';
-
-
+import PhotoFeed from './components/PhotoFeed.jsx';
+import UploadPhoto from './components/UploadPhoto.jsx';
+import PhotosPage from './components/PhotoPage.jsx';
 //  CSS
 import './index.css'
 
 // React-Router-dom //
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { CurrentUserProvider } from './components/CurrentUserContext.jsx';
+
+
 
 
 
@@ -73,6 +76,21 @@ const routes = [
         element: <Login />,
         errorElement: <ErrorPage />,
       },
+      {
+        path: 'photos',
+        element: <PhotosPage />,
+        errorElement: <ErrorPage />
+      },
+      {
+        path: 'photo-feed',
+        element: <PhotoFeed />,
+        errorElement: <ErrorPage />
+      },   
+      {
+        path: 'upload',
+        element: <UploadPhoto />,
+        errorElement: <ErrorPage />
+      }, 
       {
         path: '*',
         element: <ErrorPage />
