@@ -22,10 +22,13 @@ class User(db.Model, SerializerMixin):
 
     favorites = db.relationship('Favorite', back_populates='user')
     photos = db.relationship('Photo', back_populates='user')
+    likes = db.relationship('Like', back_populates='user')
+    comments = db.relationship('Comment', back_populates='user')
 
     country_names = association_proxy('favorites', 'countries')
 
-    serialize_rules = ('-favorites.user',)
+    serialize_rules = ('-favorites.user', '-photos.user', '-likes.user', '-comments.user', '-comments.photos',)
+
 
     @validates('username')
     def validate_username(self, key, value):
@@ -63,7 +66,7 @@ class Countries(db.Model, SerializerMixin):
 
     favorites = db.relationship('Favorite', back_populates='countries')
 
-    serialize_rules = ('-favorites', '-user',)
+    serialize_rules = ('-favorites.countries',)
 
 class Favorite(db.Model, SerializerMixin):
 
@@ -78,7 +81,8 @@ class Favorite(db.Model, SerializerMixin):
     countries = db.relationship('Countries', back_populates='favorites')
     user = db.relationship('User', back_populates='favorites')
 
-    serialize_rules = ('-favorites.user', '-favorites.countries',)
+    serialize_rules = ('-user.favorites', '-countries.favorites',)
+
 
 class NewsLetter(db.Model, SerializerMixin):
 
@@ -101,13 +105,44 @@ class Photo(db.Model, SerializerMixin):
     image = db.Column(db.String, nullable=False)
     caption = db.Column(db.String, nullable=True)
     created_at = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
+
     user_id = db.Column(db.Integer, db.ForeignKey('users_table.id'), nullable=False)
 
     user = db.relationship('User', back_populates='photos')
+    likes = db.relationship('Like', back_populates='photos')
+    comments = db.relationship('Comment', back_populates='photos')
+
+    serialize_rules = ('-user', '-comments.photos',)
+
 
 class Like(db.Model, SerializerMixin):
+
+    __tablename__ = 'like_table'
+
     id = db.Column(db.Integer, primary_key=True)
     created_at = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
 
     user_id = db.Column(db.Integer, db.ForeignKey('users_table.id'), nullable=False)
     photo_id = db.Column(db.Integer, db.ForeignKey('photo_table.id'), nullable=False)
+
+    user = db.relationship('User', back_populates='likes')
+    photos = db.relationship('Photo', back_populates='likes')
+
+    serialize_rules = ('-user.likes', '-photos.likes',)
+
+
+class Comment(db.Model, SerializerMixin):
+
+    __tablename__ = 'comment_table'
+
+    id = db.Column(db.Integer, primary_key=True)
+    content = db.Column(db.String, nullable=False)
+    created_at = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
+
+    user_id = db.Column(db.Integer, db.ForeignKey('users_table.id'), nullable=False)
+    photo_id = db.Column(db.Integer, db.ForeignKey('photo_table.id'), nullable=False)
+
+    user = db.relationship('User', back_populates='comments')
+    photos = db.relationship('Photo', back_populates='comments')
+
+    serialize_rules = ('-user.comments', '-photos.comments',)

@@ -1,5 +1,7 @@
 from flask import Flask, request, session, jsonify, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy.orm import joinedload
 from flask_migrate import Migrate
 from flask_cors import CORS
 import sqlalchemy
@@ -7,7 +9,7 @@ from flask_bcrypt import Bcrypt
 import os
 
 
-from models import db, User, Countries, Favorite, NewsLetter, Photo, Like
+from models import db, User, Countries, Favorite, NewsLetter, Photo, Like, Comment
 
 from dotenv import load_dotenv
 
@@ -165,7 +167,7 @@ def update_favorite_notes(id):
 @app.get('/api/photos')
 def list_photos():
     photos = Photo.query.all()
-    return [photo.to_dict() for photo in photos], 200
+    return [photo.to_dict() for photo in photos], 200                 
 
 # File Upload Route
 @app.post('/api/photos/upload')
@@ -187,24 +189,53 @@ def upload_photo():
 
     return new_photo.to_dict(), 201
 
-# Like Photo Route
-@app.post('/api/photos/<int:photo_id>/like')
+# Like a photo
+@app.post(URL_PREFIX + '/photos/<int:photo_id>/like')
 def like_photo(photo_id):
-    user_id = session.get('user_id')
-    if not user_id:
-        return {'error': 'Unauthorized'}, 401
+    photo = Photo.query.get_or_404(photo_id)
+    existing_like = Like.query.filter_by(user_id=session.get('user_id'), photo_id=photo_id).first()
 
-    # Check if the user has already liked the photo
-    existing_like = Like.query.filter_by(user_id=user_id, photo_id=photo_id).first()
     if existing_like:
         return {'error': 'Already liked'}, 400
 
-    # Add like
-    new_like = Like(user_id=user_id, photo_id=photo_id)
+    new_like = Like(user_id=session.get('user_id'), photo_id=photo_id)
     db.session.add(new_like)
     db.session.commit()
-
     return new_like.to_dict(), 201
+
+# Comment on a photo
+# @app.post(URL_PREFIX + '/photos/<int:photo_id>/comment')
+# def comment_on_photo(photo_id):
+#     photo = Photo.query.get_or_404(photo_id)
+#     new_comment = Comment(
+#         user_id=session.get('user_id'),
+#         photo_id=photo_id,
+#         content=request.json['content']
+#     )
+#     db.session.add(new_comment)
+#     db.session.commit()
+#     return new_comment.to_dict(), 201
+@app.post(URL_PREFIX + '/photos/<int:photo_id>/comment')
+def comment_on_photo(photo_id):
+    content = request.json['content']
+    print(f'Received comment for Photo ID {photo_id}: {content}')  # Log incoming comment
+    photo = Photo.query.get_or_404(photo_id)
+    
+    new_comment = Comment(
+        user_id=session.get('user_id'),
+        photo_id=photo_id,
+        content=content
+    )
+    
+    db.session.add(new_comment)
+    db.session.commit()
+    
+    # Log the newly created comment
+    print(f'Created comment: {new_comment.to_dict()}')
+    
+    return new_comment.to_dict(), 201
+
+
 
 
 

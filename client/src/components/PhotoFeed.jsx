@@ -13,21 +13,13 @@ function PhotoFeed() {
 
   useEffect(() => {
     fetch('/api/photos')
-      .then(res => {
-        console.log('Response Status:', res.status); 
-        return res.json();
-      })
-      .then(data => {
-        console.log('Fetched Photos:', data); 
-        setPhotos(data);
-        console.log('Updated Photos State:', photos);
-      })
+      .then(res => res.json())
+      .then(data => setPhotos(data))
       .catch(err => console.error('Error fetching photos:', err));
   }, []);
-  
+    
 
   const handleLike = async (photoId) => {
-    console.log('Liking Photo ID:', photoId);
     try {
       const response = await fetch(`/api/photos/${photoId}/like`, {
         method: 'POST',
@@ -35,7 +27,7 @@ function PhotoFeed() {
       if (response.ok) {
         alert('Liked!');
       } else {
-        console.error('Failed to like photo:', response.status); 
+        console.error('Failed to like photo:', response.status);
       }
     } catch (err) {
       console.error('Error liking photo:', err);
@@ -44,39 +36,39 @@ function PhotoFeed() {
   
 
   const handleComment = async (photoId) => {
-    console.log('Commenting on Photo ID:', photoId); 
-    console.log('Comment Content:', comment); 
+    console.log('Commenting on Photo ID:', photoId);
+    console.log('Comment Content:', comment);
     try {
       await fetch(`/api/photos/${photoId}/comment`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ content: comment }),
+        body: JSON.stringify({ content: comment[photoId] }),
       });
       alert('Commented!');
-      setComment('');
+      setComment({ ...comment, [photoId]: '' });
     } catch (err) {
       console.error('Error commenting:', err);
     }
   };
   
-
+  
   return (
     <Grid container spacing={2} sx={{ padding: 2 }}>
-      {console.log('Rendering Photos:', photos.length)} {/* Log the number of photos */}
-      {photos.map((photo) => (
-        <Grid item xs={12} sm={6} md={4} lg={3} key={photo.id}>
-          <Card>
-            <CardMedia
-              component="img"
-              height="200"
-              image={photo.photo_url}
-              alt={photo.caption}
-            />
-            <CardContent>
-              <Typography variant="body1">{photo.caption}</Typography>
-              <Typography variant="body2" color="text.secondary">
-                Posted by {photo.username}
-              </Typography>
+    {console.log('Rendering Photos:', photos)}
+    {photos.map((photo) => (
+      <Grid item xs={12} sm={6} md={4} lg={3} key={photo.id}>
+        <Card>
+          <CardMedia
+            component="img"
+            height="200"
+            image={photo.photo_url}
+            alt={photo.caption}
+          />
+          <CardContent>
+            <Typography variant="body1">{photo.caption}</Typography>
+            <Typography variant="body2" color="text.secondary">
+              Posted by {photo.username}
+            </Typography>
               <Button
                 variant="outlined"
                 color="primary"
@@ -85,12 +77,28 @@ function PhotoFeed() {
               >
                 Like
               </Button>
+              
+              {/* Display Comments */}
+              {photo.comments && photo.comments.length > 0 && (
+                <div>
+                  <Typography variant="h6" sx={{ marginTop: 2 }}>
+                    Comments:
+                  </Typography>
+                  {photo.comments.map((comment, index) => (
+                    <Typography key={index} variant="body2">
+                      {comment.username}: {comment.content}
+                    </Typography>
+                  ))}
+                </div>
+              )}
+
+              {/* Add New Comment */}
               <TextField
                 variant="outlined"
                 size="small"
                 label="Write a comment"
-                value={comment}
-                onChange={(e) => setComment(e.target.value)}
+                value={comment[photo.id] || ''}
+                onChange={(e) => setComment({ ...comment, [photo.id]: e.target.value })}
                 sx={{ marginTop: 2, width: '100%' }}
               />
               <Button

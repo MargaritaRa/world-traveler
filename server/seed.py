@@ -827,7 +827,7 @@ if __name__ == '__main__':
             image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwq6pGZwB3rsEE0Bsj6zW9GWuz7JzYFgEqrg&s",
             caption = "Flamingo",
             created_at= datetime.now(),
-            user_id = 5
+            user_id = 2
             )
         photos.append(p)
 
@@ -835,7 +835,7 @@ if __name__ == '__main__':
             image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwq6pGZwB3rsEE0Bsj6zW9GWuz7JzYFgEqrg&s",
             caption = "Flamingo",
             created_at= datetime.now(),
-            user_id = 5
+            user_id = 1
             )
         photos.append(p)
 
