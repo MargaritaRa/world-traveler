@@ -3,7 +3,7 @@ import PhotoFeed from './PhotoFeed.jsx';
 function PhotosPage () {
   return (
     <div>
-      <h1>Photos Page</h1>
+      <h1>Tell me About it</h1>
       <PhotoFeed />
     </div>
   );

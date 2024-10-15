@@ -167,7 +167,34 @@ def update_favorite_notes(id):
 @app.get('/api/photos')
 def list_photos():
     photos = Photo.query.all()
-    return [photo.to_dict() for photo in photos], 200                 
+    return [photo.to_dict() for photo in photos], 200       
+
+#  photos by username id
+@app.route('/api/photos/<int:photo_id>', methods=['GET'])
+def get_photo_with_comments(photo_id):
+    photo = Photo.query.filter_by(id=photo_id).first()
+    if not photo:
+        return jsonify({'error': 'Photo not found'}), 404
+    
+    comments = [
+        {
+            'id': comment.id,
+            'content': comment.content,
+            'created_at': comment.created_at,
+            'user': {
+                'username': comment.user.username if comment.user else 'Unknown'
+            }
+        }
+        for comment in photo.comments
+    ]
+
+    return jsonify({
+        'id': photo.id,
+        'photo_url': photo.image,
+        'caption': photo.caption,
+        'comments': comments
+    })
+
 
 # File Upload Route
 @app.post('/api/photos/upload')
@@ -204,17 +231,6 @@ def like_photo(photo_id):
     return new_like.to_dict(), 201
 
 # Comment on a photo
-# @app.post(URL_PREFIX + '/photos/<int:photo_id>/comment')
-# def comment_on_photo(photo_id):
-#     photo = Photo.query.get_or_404(photo_id)
-#     new_comment = Comment(
-#         user_id=session.get('user_id'),
-#         photo_id=photo_id,
-#         content=request.json['content']
-#     )
-#     db.session.add(new_comment)
-#     db.session.commit()
-#     return new_comment.to_dict(), 201
 @app.post(URL_PREFIX + '/photos/<int:photo_id>/comment')
 def comment_on_photo(photo_id):
     content = request.json['content']
